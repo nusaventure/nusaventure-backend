@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Places {
+model Place {
   id String @id @default(cuid())
 
   name String @unique @db.VarChar(255)

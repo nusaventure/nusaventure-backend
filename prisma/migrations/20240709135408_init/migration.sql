@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE "Places" (
+CREATE TABLE "Place" (
     "id" TEXT NOT NULL,
     "name" VARCHAR(255) NOT NULL,
     "description" TEXT,
@@ -7,8 +7,8 @@ CREATE TABLE "Places" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Places_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Place_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Places_name_key" ON "Places"("name");
+CREATE UNIQUE INDEX "Place_name_key" ON "Place"("name");
