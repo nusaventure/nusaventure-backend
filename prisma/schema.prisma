@@ -41,6 +41,7 @@ model Island {
 
 model City {
   id        String   @id @default(cuid())
+  countryId String
   islandId  String
   name      String
   imageUrl  String   @db.Text

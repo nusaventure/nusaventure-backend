@@ -30,6 +30,7 @@ CREATE TABLE "islands" (
 -- CreateTable
 CREATE TABLE "cities" (
     "id" TEXT NOT NULL,
+    "countryId" TEXT NOT NULL,
     "islandId" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "imageUrl" TEXT NOT NULL,
