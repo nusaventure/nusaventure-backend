@@ -8,59 +8,70 @@ datasource db {
 }
 
 model Country {
-  id        String   @id @default(cuid())
+  id        String @id @default(cuid())
   name      String
-  imageUrl  String   @db.Text
+  imageUrl  String @db.Text
   latitude  Float
   longitude Float
   zoom      Float
+
+  islands Island[]
+  cities  City[]
+  places  Place[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
-  islands   Island[]
-  places    Place[]
 
   @@map("countries")
 }
 
 model Island {
-  id        String   @id @default(cuid())
+  id        String  @id @default(cuid())
   countryId String
+  country   Country @relation(fields: [countryId], references: [id])
   name      String
-  imageUrl  String   @db.Text
+  imageUrl  String  @db.Text
   latitude  Float
   longitude Float
   zoom      Float
+
+  cities City[]
+  places Place[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
-  country   Country  @relation(fields: [countryId], references: [id])
-  cities    City[]
-  places    Place[]
 
   @@map("islands")
 }
 
 model City {
-  id        String   @id @default(cuid())
+  id        String  @id @default(cuid())
+  countryId String
+  country   Country @relation(fields: [countryId], references: [id])
   islandId  String
+  island    Island  @relation(fields: [islandId], references: [id])
   name      String
-  imageUrl  String   @db.Text
+  imageUrl  String  @db.Text
   latitude  Float
   longitude Float
   zoom      Float
+
+  places Place[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
-  island    Island   @relation(fields: [islandId], references: [id])
-  places    Place[]
 
   @@map("cities")
 }
 
 model Category {
-  id        String   @id @default(cuid())
-  name      String
+  id   String @id @default(cuid())
+  name String
+
+  places Place[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
-  places    Place[]
 
   @@map("categories")
 }
@@ -68,9 +79,13 @@ model Category {
 model Place {
   id          String   @id @default(cuid())
   countryId   String
+  country     Country  @relation(fields: [countryId], references: [id])
   islandId    String
+  island      Island   @relation(fields: [islandId], references: [id])
   cityId      String
+  city        City     @relation(fields: [cityId], references: [id])
   categoryId  String
+  category    Category @relation(fields: [categoryId], references: [id])
   title       String
   slug        String   @unique
   description String   @db.Text
@@ -79,27 +94,26 @@ model Place {
   longitude   Float
   zoom        Float
   address     String   @db.Text
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @default(now()) @updatedAt
-  country     Country  @relation(fields: [countryId], references: [id])
-  island      Island   @relation(fields: [islandId], references: [id])
-  city        City     @relation(fields: [cityId], references: [id])
-  category    Category @relation(fields: [categoryId], references: [id])
-  images      Image[]
+
+  images PlaceImage[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 
   @@index([countryId, islandId, cityId])
   @@map("places")
 }
 
-model Image {
-  id          String   @id @default(cuid())
+model PlaceImage {
+  id          String @id @default(cuid())
   placeId     String
-  url         String   @db.Text
+  place       Place  @relation(fields: [placeId], references: [id])
+  url         String @db.Text
   title       String
-  description String   @db.Text
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @default(now()) @updatedAt
-  place       Place    @relation(fields: [placeId], references: [id])
+  description String @db.Text
 
-  @@map("images")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  @@map("placeImages")
 }

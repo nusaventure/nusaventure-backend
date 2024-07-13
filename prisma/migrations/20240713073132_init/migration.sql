@@ -30,6 +30,7 @@ CREATE TABLE "islands" (
 -- CreateTable
 CREATE TABLE "cities" (
     "id" TEXT NOT NULL,
+    "countryId" TEXT NOT NULL,
     "islandId" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "imageUrl" TEXT NOT NULL,
@@ -74,7 +75,7 @@ CREATE TABLE "places" (
 );
 
 -- CreateTable
-CREATE TABLE "images" (
+CREATE TABLE "placeImages" (
     "id" TEXT NOT NULL,
     "placeId" TEXT NOT NULL,
     "url" TEXT NOT NULL,
@@ -83,7 +84,7 @@ CREATE TABLE "images" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "images_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "placeImages_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -111,4 +112,4 @@ ALTER TABLE "places" ADD CONSTRAINT "places_cityId_fkey" FOREIGN KEY ("cityId") 
 ALTER TABLE "places" ADD CONSTRAINT "places_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "categories"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "images" ADD CONSTRAINT "images_placeId_fkey" FOREIGN KEY ("placeId") REFERENCES "places"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "placeImages" ADD CONSTRAINT "placeImages_placeId_fkey" FOREIGN KEY ("placeId") REFERENCES "places"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
