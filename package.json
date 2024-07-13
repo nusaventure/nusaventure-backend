@@ -1,7 +1,7 @@
 {
   "name": "nusaventure-backend",
   "scripts": {
-    "dev": "bun run --hot src/index.ts",
+    "dev": "bun run --hot src/index.tsx",
     "start": "bun run src/index.tsx",
     "generate": "prisma generate",
     "seed": "prisma db seed",
