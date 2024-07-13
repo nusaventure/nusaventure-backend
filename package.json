@@ -9,6 +9,9 @@
     "migrate:dev": "prisma migrate dev",
     "migrate:deploy": "prisma migrate deploy"
   },
+  "prisma": {
+    "seed": "bun run prisma/seeders/index.ts"
+  },
   "dependencies": {
     "@hono/swagger-ui": "^0.3.0",
     "@hono/zod-openapi": "^0.14.8",
