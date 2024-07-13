@@ -8,7 +8,7 @@ const app = new OpenAPIHono({ strict: false })
 
 // CORS
 app.use(
-  "/api/*",
+  "/*",
   cors({
     origin: process.env.CORS_ORIGIN?.split(",") ?? [],
   })
