@@ -1,9 +1,18 @@
 import { swaggerUI } from "@hono/swagger-ui"
 import { OpenAPIHono } from "@hono/zod-openapi"
+import { cors } from "hono/cors"
 import { placeRoute } from "./places/route"
 import { WelcomePage } from "./welcome"
 
-const app = new OpenAPIHono()
+const app = new OpenAPIHono({ strict: false })
+
+// CORS
+app.use(
+  "/api/*",
+  cors({
+    origin: process.env.CORS_ORIGIN?.split(",") ?? [],
+  })
+)
 
 // OPEN API
 app.doc31("/api-spec", {
