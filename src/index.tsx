@@ -1,15 +1,12 @@
 import { swaggerUI } from "@hono/swagger-ui"
 import { OpenAPIHono } from "@hono/zod-openapi"
 import { placeRoute } from "./places/route"
+import { WelcomePage } from "./welcome"
 
 const app = new OpenAPIHono()
 
-app.get("/", (c) => {
-  return c.text("Hello Hono!")
-})
-
 // OPEN API
-app.doc31("/docs", {
+app.doc31("/api-spec", {
   openapi: "3.0.0",
   info: {
     version: "1.0.0",
@@ -20,9 +17,30 @@ app.doc31("/docs", {
 })
 
 // SWAGGER UI
-app.get("/ui", swaggerUI({ url: "/docs" }))
+app.get("/api", swaggerUI({ url: "/api-spec" }))
 
 // ROUTES
 app.route("/places", placeRoute)
+
+// WELCOME PAGE
+app.get("/", (c) =>
+  c.html(
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Welcome to Nusaventure REST API</title>
+        <meta
+          name="description"
+          content="Nusaventure helps you discover captivating tourist destinations and culinary delights in Nusantara."
+        />
+        <script src="https://cdn.tailwindcss.com"></script>
+      </head>
+      <body>
+        <WelcomePage />
+      </body>
+    </html>
+  )
+)
 
 export default app
