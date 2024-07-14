@@ -15,9 +15,9 @@ model Country {
   longitude Float
   zoom      Float
 
-  islands Island[]
-  cities  City[]
-  places  Place[]
+  states State[]
+  cities City[]
+  places Place[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
@@ -25,7 +25,7 @@ model Country {
   @@map("countries")
 }
 
-model Island {
+model State {
   id        String  @id @default(cuid())
   countryId String
   country   Country @relation(fields: [countryId], references: [id])
@@ -41,15 +41,15 @@ model Island {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
 
-  @@map("islands")
+  @@map("states")
 }
 
 model City {
   id        String  @id @default(cuid())
   countryId String
   country   Country @relation(fields: [countryId], references: [id])
-  islandId  String
-  island    Island  @relation(fields: [islandId], references: [id])
+  stateId   String
+  state     State   @relation(fields: [stateId], references: [id])
   name      String
   imageUrl  String  @db.Text
   latitude  Float
@@ -80,8 +80,8 @@ model Place {
   id          String   @id @default(cuid())
   countryId   String
   country     Country  @relation(fields: [countryId], references: [id])
-  islandId    String
-  island      Island   @relation(fields: [islandId], references: [id])
+  stateId     String
+  state       State    @relation(fields: [stateId], references: [id])
   cityId      String
   city        City     @relation(fields: [cityId], references: [id])
   categoryId  String
@@ -100,7 +100,7 @@ model Place {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
 
-  @@index([countryId, islandId, cityId])
+  @@index([countryId, stateId, cityId])
   @@map("places")
 }
 

@@ -13,7 +13,7 @@ CREATE TABLE "countries" (
 );
 
 -- CreateTable
-CREATE TABLE "islands" (
+CREATE TABLE "states" (
     "id" TEXT NOT NULL,
     "countryId" TEXT NOT NULL,
     "name" TEXT NOT NULL,
@@ -24,14 +24,14 @@ CREATE TABLE "islands" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "islands_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "states_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "cities" (
     "id" TEXT NOT NULL,
     "countryId" TEXT NOT NULL,
-    "islandId" TEXT NOT NULL,
+    "stateId" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "imageUrl" TEXT NOT NULL,
     "latitude" DOUBLE PRECISION NOT NULL,
@@ -57,7 +57,7 @@ CREATE TABLE "categories" (
 CREATE TABLE "places" (
     "id" TEXT NOT NULL,
     "countryId" TEXT NOT NULL,
-    "islandId" TEXT NOT NULL,
+    "stateId" TEXT NOT NULL,
     "cityId" TEXT NOT NULL,
     "categoryId" TEXT NOT NULL,
     "title" TEXT NOT NULL,
@@ -91,19 +91,22 @@ CREATE TABLE "placeImages" (
 CREATE UNIQUE INDEX "places_slug_key" ON "places"("slug");
 
 -- CreateIndex
-CREATE INDEX "places_countryId_islandId_cityId_idx" ON "places"("countryId", "islandId", "cityId");
+CREATE INDEX "places_countryId_stateId_cityId_idx" ON "places"("countryId", "stateId", "cityId");
 
 -- AddForeignKey
-ALTER TABLE "islands" ADD CONSTRAINT "islands_countryId_fkey" FOREIGN KEY ("countryId") REFERENCES "countries"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "states" ADD CONSTRAINT "states_countryId_fkey" FOREIGN KEY ("countryId") REFERENCES "countries"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "cities" ADD CONSTRAINT "cities_islandId_fkey" FOREIGN KEY ("islandId") REFERENCES "islands"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "cities" ADD CONSTRAINT "cities_countryId_fkey" FOREIGN KEY ("countryId") REFERENCES "countries"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "cities" ADD CONSTRAINT "cities_stateId_fkey" FOREIGN KEY ("stateId") REFERENCES "states"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "places" ADD CONSTRAINT "places_countryId_fkey" FOREIGN KEY ("countryId") REFERENCES "countries"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "places" ADD CONSTRAINT "places_islandId_fkey" FOREIGN KEY ("islandId") REFERENCES "islands"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "places" ADD CONSTRAINT "places_stateId_fkey" FOREIGN KEY ("stateId") REFERENCES "states"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "places" ADD CONSTRAINT "places_cityId_fkey" FOREIGN KEY ("cityId") REFERENCES "cities"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
