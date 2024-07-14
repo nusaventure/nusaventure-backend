@@ -1,9 +1,9 @@
-import { PrismaClient } from "@prisma/client";
+import { Prisma, PrismaClient } from "@prisma/client";
 
 export default async function run(prisma: PrismaClient) {
-  const countries = [
+  const countries: Array<Prisma.CountryCreateInput> = [
     {
-      id: "id",
+      id: "102",
       name: "Indonesia",
       imageUrl:
         "https://images.unsplash.com/photo-1533805994737-558461dcb28e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -12,7 +12,7 @@ export default async function run(prisma: PrismaClient) {
       zoom: 4,
     },
     {
-      id: "my",
+      id: "132",
       name: "Malaysia",
       imageUrl:
         "https://images.unsplash.com/photo-1549154425-7b519f2b92d4?q=80&w=2020&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -21,7 +21,7 @@ export default async function run(prisma: PrismaClient) {
       zoom: 5,
     },
     {
-      id: "sg",
+      id: "199",
       name: "Singapore",
       imageUrl:
         "https://images.unsplash.com/photo-1562300735-b1f7f50e774b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
