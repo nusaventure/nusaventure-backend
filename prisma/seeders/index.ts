@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import countries from "./countries";
 import states from "./states";
+import cities from "./cities";
 
 const prisma = new PrismaClient();
 
@@ -8,6 +9,7 @@ const prisma = new PrismaClient();
   try {
     await countries(prisma);
     await states(prisma);
+    await cities(prisma);
   } catch (e) {
     console.error(e);
     process.exit(1);
