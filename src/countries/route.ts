@@ -6,7 +6,7 @@ const API_TAG = ["Countries"];
 
 const countryRoute = new OpenAPIHono();
 
-// GET ALL COUNTRY
+// GET ALL COUNTRIES
 countryRoute.openapi(
   {
     method: "get",
