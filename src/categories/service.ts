@@ -7,7 +7,6 @@ export async function getAll(query?: z.infer<typeof QueryCategorySchema>) {
     select: {
       id: true,
       name: true,
-      places: true,
     },
     where: {
       name: {
