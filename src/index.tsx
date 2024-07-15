@@ -1,10 +1,11 @@
 import { swaggerUI } from "@hono/swagger-ui"
 import { OpenAPIHono } from "@hono/zod-openapi"
 import { cors } from "hono/cors"
-import { placeRoute } from "./places/route"
-import { WelcomePage } from "./welcome"
+import { citiesRoute } from "./cities/route"
 import { countryRoute } from "./countries/route"
+import { placeRoute } from "./places/route"
 import { stateRoute } from "./states/route"
+import { WelcomePage } from "./welcome"
 
 const app = new OpenAPIHono({ strict: false })
 
@@ -34,6 +35,7 @@ app.get("/api", swaggerUI({ url: "/api-spec" }))
 app.route("/places", placeRoute)
 app.route("/countries", countryRoute)
 app.route("/states", stateRoute)
+app.route("/cities", citiesRoute)
 
 // WELCOME PAGE
 app.get("/", (c) =>
