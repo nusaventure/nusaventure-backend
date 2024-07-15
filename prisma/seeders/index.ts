@@ -3,6 +3,7 @@ import countries from "./countries";
 import states from "./states";
 import cities from "./cities";
 import categories from "./categories";
+import places from "./places";
 
 const prisma = new PrismaClient();
 
@@ -12,6 +13,7 @@ const prisma = new PrismaClient();
     await states(prisma);
     await cities(prisma);
     await categories(prisma);
+    await places(prisma);
   } catch (e) {
     console.error(e);
     process.exit(1);
