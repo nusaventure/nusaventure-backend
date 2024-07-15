@@ -1,7 +1,7 @@
 import { Prisma, PrismaClient } from "@prisma/client";
 
 export default async function run(prisma: PrismaClient) {
-  const countries: Array<Prisma.PlaceCreateManyInput> = [
+  const places: Array<Prisma.PlaceCreateManyInput> = [
     {
       id: "1",
       countryId: "102",
@@ -40,7 +40,7 @@ export default async function run(prisma: PrismaClient) {
   ];
 
   await Promise.all(
-    countries.map(async (place) => {
+    places.map(async (place) => {
       await prisma.place.upsert({
         where: { id: place.id },
         update: place,

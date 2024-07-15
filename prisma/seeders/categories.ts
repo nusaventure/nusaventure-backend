@@ -1,7 +1,7 @@
 import { Prisma, PrismaClient } from "@prisma/client";
 
 export default async function run(prisma: PrismaClient) {
-  const countries: Array<Prisma.CategoryCreateManyInput> = [
+  const categories: Array<Prisma.CategoryCreateManyInput> = [
     {
       id: "accounting",
       name: "Accounting",
@@ -389,7 +389,7 @@ export default async function run(prisma: PrismaClient) {
   ];
 
   await Promise.all(
-    countries.map(async (category) => {
+    categories.map(async (category) => {
       await prisma.category.upsert({
         where: { id: category.id },
         update: category,
