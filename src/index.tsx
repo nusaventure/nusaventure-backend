@@ -4,6 +4,7 @@ import { cors } from "hono/cors"
 import { placeRoute } from "./places/route"
 import { WelcomePage } from "./welcome"
 import { countryRoute } from "./countries/route"
+import { stateRoute } from "./states/route"
 
 const app = new OpenAPIHono({ strict: false })
 
@@ -32,6 +33,7 @@ app.get("/api", swaggerUI({ url: "/api-spec" }))
 // ROUTES
 app.route("/places", placeRoute)
 app.route("/countries", countryRoute)
+app.route("/states", stateRoute)
 
 // WELCOME PAGE
 app.get("/", (c) =>
