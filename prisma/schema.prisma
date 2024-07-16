@@ -35,6 +35,7 @@ model Island {
   latitude  Float
   longitude Float
   zoom      Float
+  slug      String @unique
 
   country   Country @relation(fields: [countryId], references: [id])
   countryId String

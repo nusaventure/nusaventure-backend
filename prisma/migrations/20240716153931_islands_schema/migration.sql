@@ -15,12 +15,16 @@ CREATE TABLE "islands" (
     "latitude" DOUBLE PRECISION NOT NULL,
     "longitude" DOUBLE PRECISION NOT NULL,
     "zoom" DOUBLE PRECISION NOT NULL,
+    "slug" TEXT NOT NULL,
     "countryId" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "islands_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "islands_slug_key" ON "islands"("slug");
 
 -- AddForeignKey
 ALTER TABLE "islands" ADD CONSTRAINT "islands_countryId_fkey" FOREIGN KEY ("countryId") REFERENCES "countries"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
