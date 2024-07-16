@@ -8,16 +8,18 @@ datasource db {
 }
 
 model Country {
-  id        String @id @default(cuid())
+  id String @id @default(cuid())
+
   name      String
   imageUrl  String @db.Text
   latitude  Float
   longitude Float
   zoom      Float
 
-  states State[]
-  cities City[]
-  places Place[]
+  islands Island[]
+  states  State[]
+  cities  City[]
+  places  Place[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
@@ -25,18 +27,42 @@ model Country {
   @@map("countries")
 }
 
-model State {
-  id        String  @id @default(cuid())
-  countryId String
-  country   Country @relation(fields: [countryId], references: [id])
+model Island {
+  id String @id @default(cuid())
+
   name      String
-  imageUrl  String  @db.Text
+  imageUrl  String @db.Text
   latitude  Float
   longitude Float
   zoom      Float
 
-  cities City[]
-  places Place[]
+  country   Country @relation(fields: [countryId], references: [id])
+  countryId String
+  states    State[]
+  cities    City[]
+  places    Place[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  @@map("islands")
+}
+
+model State {
+  id String @id @default(cuid())
+
+  name      String
+  imageUrl  String @db.Text
+  latitude  Float
+  longitude Float
+  zoom      Float
+
+  island    Island? @relation(fields: [islandId], references: [id])
+  islandId  String?
+  countryId String
+  country   Country @relation(fields: [countryId], references: [id])
+  cities    City[]
+  places    Place[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
@@ -45,18 +71,21 @@ model State {
 }
 
 model City {
-  id        String  @id @default(cuid())
-  countryId String
-  country   Country @relation(fields: [countryId], references: [id])
-  stateId   String
-  state     State   @relation(fields: [stateId], references: [id])
+  id String @id @default(cuid())
+
   name      String
-  imageUrl  String  @db.Text
+  imageUrl  String @db.Text
   latitude  Float
   longitude Float
   zoom      Float
 
-  places Place[]
+  country   Country @relation(fields: [countryId], references: [id])
+  countryId String
+  state     State   @relation(fields: [stateId], references: [id])
+  stateId   String
+  Island    Island? @relation(fields: [islandId], references: [id])
+  islandId  String?
+  places    Place[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
@@ -79,25 +108,28 @@ model Category {
 }
 
 model Place {
-  id          String   @id @default(cuid())
-  countryId   String
-  country     Country  @relation(fields: [countryId], references: [id])
-  stateId     String
-  state       State    @relation(fields: [stateId], references: [id])
-  cityId      String
-  city        City     @relation(fields: [cityId], references: [id])
-  categoryId  String
-  category    Category @relation(fields: [categoryId], references: [id])
+  id String @id @default(cuid())
+
   title       String
-  slug        String   @unique
-  description String   @db.Text
-  imageUrl    String   @db.Text
+  slug        String @unique
+  description String @db.Text
+  imageUrl    String @db.Text
   latitude    Float
   longitude   Float
   zoom        Float
-  address     String   @db.Text
+  address     String @db.Text
 
-  images PlaceImage[]
+  country    Country      @relation(fields: [countryId], references: [id])
+  countryId  String
+  state      State        @relation(fields: [stateId], references: [id])
+  stateId    String
+  city       City         @relation(fields: [cityId], references: [id])
+  cityId     String
+  category   Category     @relation(fields: [categoryId], references: [id])
+  categoryId String
+  island     Island?      @relation(fields: [islandId], references: [id])
+  islandId   String?
+  images     PlaceImage[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
@@ -107,12 +139,14 @@ model Place {
 }
 
 model PlaceImage {
-  id          String @id @default(cuid())
-  placeId     String
-  place       Place  @relation(fields: [placeId], references: [id])
+  id String @id @default(cuid())
+
   url         String @db.Text
   title       String
   description String @db.Text
+
+  place   Place  @relation(fields: [placeId], references: [id])
+  placeId String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
