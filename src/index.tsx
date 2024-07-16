@@ -1,14 +1,14 @@
-import { swaggerUI } from "@hono/swagger-ui"
-import { OpenAPIHono } from "@hono/zod-openapi"
-import { cors } from "hono/cors"
-import { categoryRoute } from "./categories/route"
-import { citiesRoute } from "./cities/route"
-import { countryRoute } from "./countries/route"
-import { placeRoute } from "./places/route"
-import { stateRoute } from "./states/route"
-import { WelcomePage } from "./welcome"
+import { swaggerUI } from "@hono/swagger-ui";
+import { OpenAPIHono } from "@hono/zod-openapi";
+import { cors } from "hono/cors";
+import { categoryRoute } from "./categories/route";
+import { citiesRoute } from "./cities/route";
+import { countryRoute } from "./countries/route";
+import { placeRoute } from "./places/route";
+import { stateRoute } from "./states/route";
+import { WelcomePage } from "./welcome";
 
-const app = new OpenAPIHono({ strict: false })
+const app = new OpenAPIHono({ strict: false });
 
 // CORS
 app.use(
@@ -16,7 +16,7 @@ app.use(
   cors({
     origin: process.env.CORS_ORIGIN?.split(",") ?? [],
   })
-)
+);
 
 // OPEN API
 app.doc31("/api-spec", {
@@ -27,17 +27,17 @@ app.doc31("/api-spec", {
     description:
       "Nusaventure helps you discover captivating tourist destinations and culinary delights in Nusantara.\n\nNusaventure, short for Nusantara Adventure, is a platform that inspires exploration of various legendary tourist spots, delicious culinary varieties, interesting activities and events, understanding the ecosystem and communities, and more.",
   },
-})
+});
 
 // SWAGGER UI
-app.get("/api", swaggerUI({ url: "/api-spec" }))
+app.get("/api", swaggerUI({ url: "/api-spec" }));
 
 // ROUTES
-app.route("/places", placeRoute)
-app.route("/countries", countryRoute)
-app.route("/states", stateRoute)
-app.route("/cities", citiesRoute)
-app.route("/categories", categoryRoute)
+app.route("/places", placeRoute);
+app.route("/countries", countryRoute);
+app.route("/states", stateRoute);
+app.route("/cities", citiesRoute);
+app.route("/categories", categoryRoute);
 
 // WELCOME PAGE
 app.get("/", (c) =>
@@ -58,6 +58,6 @@ app.get("/", (c) =>
       </body>
     </html>
   )
-)
+);
 
-export default app
+export default app;
