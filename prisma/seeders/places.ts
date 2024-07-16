@@ -1,13 +1,16 @@
 import { Prisma, PrismaClient } from "@prisma/client";
 
+type PlaceSeeder = Omit<Prisma.PlaceCreateManyInput, "categoryId"> & {
+  categorySlugs: string[];
+};
+
 export default async function run(prisma: PrismaClient) {
-  const places: Array<Prisma.PlaceCreateManyInput> = [
+  const places: Array<PlaceSeeder> = [
     {
-      id: "1",
       countryId: "102",
       stateId: "1825",
       cityId: "56731",
-      categoryId: "localgovernmentoffice",
+      categorySlugs: ["localgovernmentoffice"],
       title: "Gedung Sate",
       slug: "gedung-sate",
       description:
@@ -21,11 +24,10 @@ export default async function run(prisma: PrismaClient) {
         "Jl. Diponegoro No.22, Citarum, Kec. Bandung Wetan, Kota Bandung, Jawa Barat 40115",
     },
     {
-      id: "2",
       countryId: "102",
       stateId: "1825",
       cityId: "56731",
-      categoryId: "mosque",
+      categorySlugs: ["mosque", "historicalsites"],
       title: "Masjid Raya Al Jabbar",
       slug: "masjid-raya-al-jabbar",
       description: "Mosque",
@@ -40,11 +42,18 @@ export default async function run(prisma: PrismaClient) {
   ];
 
   await Promise.all(
-    places.map(async (place) => {
+    places.map(async (placeData) => {
+      const { categorySlugs, ...place } = placeData;
+
       await prisma.place.upsert({
-        where: { id: place.id },
+        where: { slug: place.slug },
         update: place,
-        create: place,
+        create: {
+          ...place,
+          categories: {
+            connect: categorySlugs.map((slug) => ({ slug })),
+          },
+        },
       });
     })
   );

@@ -132,6 +132,17 @@ model Place {
   islandId   String?
   images     PlaceImage[]
 
+  countryId String
+  country   Country @relation(fields: [countryId], references: [id])
+
+  stateId String
+  state   State  @relation(fields: [stateId], references: [id])
+
+  cityId String
+  city   City   @relation(fields: [cityId], references: [id])
+
+  categories Category[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
 
