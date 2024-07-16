@@ -1,6 +1,6 @@
 import { OpenAPIHono, z } from "@hono/zod-openapi"
 import * as placeService from "./service"
-import { PlaceCitySchema } from "./schema"
+import { PlaceCitySchema, PlaceSlugSchema } from "./schema"
 
 const API_TAG = ["Places"]
 
@@ -28,6 +28,42 @@ export const placeRoute = new OpenAPIHono()
 
       return c.json({
         message: "Successfully get the places data",
+        data,
+      })
+    }
+  )
+
+  // GET PLACE BY SLUG
+  .openapi(
+    {
+      method: "get",
+      path: "/{slug}",
+      request: {
+        params: PlaceSlugSchema,
+      },
+      description: "Get detail place by slug",
+      responses: {
+        200: {
+          description: "Successfully get place details",
+        },
+        400: {
+          description: "Place not found",
+        },
+      },
+      tags: API_TAG,
+    },
+    async (c) => {
+      const slug = c.req.param("slug")?.toString()
+
+      const data = await placeService.getDetailPlaceBySlug(slug)
+
+      if (!data) {
+        c.status(404)
+        return c.json({ message: "Place not found" })
+      }
+
+      return c.json({
+        message: "Susscessfully get detail place",
         data,
       })
     }
