@@ -172,6 +172,36 @@ export default async function run(prisma: PrismaClient) {
       longitude: 97.3705768,
       zoom: 9,
     },
+    {
+      countryId: "102",
+      name: "Buton",
+      slug: "buton",
+      imageUrl:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Reflection_of_Floating_House_of_Bajau_in_Bajau_Sampela_Village_Wakatobi.jpg/1280px-Reflection_of_Floating_House_of_Bajau_in_Bajau_Sampela_Village_Wakatobi.jpg",
+      latitude: -5.0405425,
+      longitude: 122.8116263,
+      zoom: 9,
+    },
+    {
+      countryId: "102",
+      name: "Lombok",
+      slug: "lombok",
+      imageUrl:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Lombok_In_Memories%2C_Senggigi.jpg/1280px-Lombok_In_Memories%2C_Senggigi.jpg",
+      latitude: -8.5476683,
+      longitude: 116.1053826,
+      zoom: 9,
+    },
+    {
+      countryId: "102",
+      name: "Madura",
+      slug: "madura",
+      imageUrl:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Gua_Lebar_-_panoramio.jpg/1280px-Gua_Lebar_-_panoramio.jpg",
+      latitude: -7.0581924,
+      longitude: 112.7396031,
+      zoom: 9,
+    },
   ];
 
   await Promise.all(
