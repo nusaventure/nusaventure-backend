@@ -65,7 +65,9 @@ model City {
 }
 
 model Category {
-  id   String @id @default(cuid())
+  id String @id @default(cuid())
+
+  slug String @unique
   name String
 
   places Place[]
