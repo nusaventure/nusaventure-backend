@@ -60,4 +60,6 @@ app.get("/", (c) =>
   )
 );
 
+console.info(`Database URL: ${process.env.DATABASE_URL}`);
+
 export default app;

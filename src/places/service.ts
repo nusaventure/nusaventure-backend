@@ -31,9 +31,10 @@ const placeResponseData: Prisma.PlaceSelect = {
       name: true,
     },
   },
-  category: {
+  categories: {
     select: {
       id: true,
+      slug: true,
       name: true,
     },
   },
@@ -46,7 +47,7 @@ export async function getAll(query: z.infer<typeof PlaceCitySchema>) {
       countryId: query.countryId,
       stateId: query.stateId,
       cityId: query.cityId,
-      categoryId: query.categoryId,
+      // categories: query.categoryId,
       OR: [
         {
           title: {

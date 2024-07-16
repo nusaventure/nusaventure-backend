@@ -3,387 +3,399 @@ import { Prisma, PrismaClient } from "@prisma/client";
 export default async function run(prisma: PrismaClient) {
   const categories: Array<Prisma.CategoryCreateManyInput> = [
     {
-      id: "accounting",
+      slug: "beach",
+      name: "Beach",
+    },
+    {
+      slug: "mountain",
+      name: "Mountain",
+    },
+    {
+      slug: "historicalsites",
+      name: "Historical Sites",
+    },
+    {
+      slug: "accounting",
       name: "Accounting",
     },
     {
-      id: "airport",
+      slug: "airport",
       name: "Airport",
     },
     {
-      id: "amusementpark",
+      slug: "amusementpark",
       name: "Amusement Park",
     },
     {
-      id: "aquarium",
+      slug: "aquarium",
       name: "Aquarium",
     },
     {
-      id: "artgallery",
+      slug: "artgallery",
       name: "Art Gallery",
     },
     {
-      id: "atm",
+      slug: "atm",
       name: "Atm",
     },
     {
-      id: "bakery",
+      slug: "bakery",
       name: "Bakery",
     },
     {
-      id: "bank",
+      slug: "bank",
       name: "Bank",
     },
     {
-      id: "bar",
+      slug: "bar",
       name: "Bar",
     },
     {
-      id: "beautysalon",
+      slug: "beautysalon",
       name: "Beauty Salon",
     },
     {
-      id: "bicyclestore",
+      slug: "bicyclestore",
       name: "Bicycle Store",
     },
     {
-      id: "bookstore",
+      slug: "bookstore",
       name: "Book Store",
     },
     {
-      id: "bowlingalley",
+      slug: "bowlingalley",
       name: "Bowling Alley",
     },
     {
-      id: "busstation",
+      slug: "busstation",
       name: "Bus Station",
     },
     {
-      id: "cafe",
+      slug: "cafe",
       name: "Cafe",
     },
     {
-      id: "campground",
+      slug: "campground",
       name: "Campground",
     },
     {
-      id: "cardealer",
+      slug: "cardealer",
       name: "Car Dealer",
     },
     {
-      id: "carrental",
+      slug: "carrental",
       name: "Car Rental",
     },
     {
-      id: "carrepair",
+      slug: "carrepair",
       name: "Car Repair",
     },
     {
-      id: "carwash",
+      slug: "carwash",
       name: "Car Wash",
     },
     {
-      id: "casino",
+      slug: "casino",
       name: "Casino",
     },
     {
-      id: "cemetery",
+      slug: "cemetery",
       name: "Cemetery",
     },
     {
-      id: "church",
+      slug: "church",
       name: "Church",
     },
     {
-      id: "cityhall",
+      slug: "cityhall",
       name: "City Hall",
     },
     {
-      id: "clothingstore",
+      slug: "clothingstore",
       name: "Clothing Store",
     },
     {
-      id: "conveniencestore",
+      slug: "conveniencestore",
       name: "Convenience Store",
     },
     {
-      id: "courthouse",
+      slug: "courthouse",
       name: "Courthouse",
     },
     {
-      id: "dentist",
+      slug: "dentist",
       name: "Dentist",
     },
     {
-      id: "departmentstore",
+      slug: "departmentstore",
       name: "Department Store",
     },
     {
-      id: "doctor",
+      slug: "doctor",
       name: "Doctor",
     },
     {
-      id: "drugstore",
+      slug: "drugstore",
       name: "Drugstore",
     },
     {
-      id: "electrician",
+      slug: "electrician",
       name: "Electrician",
     },
     {
-      id: "electronicsstore",
+      slug: "electronicsstore",
       name: "Electronics Store",
     },
     {
-      id: "embassy",
+      slug: "embassy",
       name: "Embassy",
     },
     {
-      id: "firestation",
+      slug: "firestation",
       name: "Fire Station",
     },
     {
-      id: "florist",
+      slug: "florist",
       name: "Florist",
     },
     {
-      id: "funeralhome",
+      slug: "funeralhome",
       name: "Funeral Home",
     },
     {
-      id: "furniturestore",
+      slug: "furniturestore",
       name: "Furniture Store",
     },
     {
-      id: "gasstation",
+      slug: "gasstation",
       name: "Gas Station",
     },
     {
-      id: "gym",
+      slug: "gym",
       name: "Gym",
     },
     {
-      id: "haircare",
+      slug: "haircare",
       name: "Hair Care",
     },
     {
-      id: "hardwarestore",
+      slug: "hardwarestore",
       name: "Hardware Store",
     },
     {
-      id: "hindutemple",
+      slug: "hindutemple",
       name: "Hindu Temple",
     },
     {
-      id: "homegoodsstore",
+      slug: "homegoodsstore",
       name: "Home Goods Store",
     },
     {
-      id: "hospital",
+      slug: "hospital",
       name: "Hospital",
     },
     {
-      id: "insuranceagency",
+      slug: "insuranceagency",
       name: "Insurance Agency",
     },
     {
-      id: "jewelrystore",
+      slug: "jewelrystore",
       name: "Jewelry Store",
     },
     {
-      id: "laundry",
+      slug: "laundry",
       name: "Laundry",
     },
     {
-      id: "lawyer",
+      slug: "lawyer",
       name: "Lawyer",
     },
     {
-      id: "library",
+      slug: "library",
       name: "Library",
     },
     {
-      id: "lightrailstation",
+      slug: "lightrailstation",
       name: "Light Rail Station",
     },
     {
-      id: "liquorstore",
+      slug: "liquorstore",
       name: "Liquor Store",
     },
     {
-      id: "localgovernmentoffice",
+      slug: "localgovernmentoffice",
       name: "Local Government Office",
     },
     {
-      id: "locksmith",
+      slug: "locksmith",
       name: "Locksmith",
     },
     {
-      id: "lodging",
+      slug: "lodging",
       name: "Lodging",
     },
     {
-      id: "mealdelivery",
+      slug: "mealdelivery",
       name: "Meal Delivery",
     },
     {
-      id: "mealtakeaway",
+      slug: "mealtakeaway",
       name: "Meal Takeaway",
     },
     {
-      id: "mosque",
+      slug: "mosque",
       name: "Mosque",
     },
     {
-      id: "movierental",
+      slug: "movierental",
       name: "Movie Rental",
     },
     {
-      id: "movietheater",
+      slug: "movietheater",
       name: "Movie Theater",
     },
     {
-      id: "movingcompany",
+      slug: "movingcompany",
       name: "Moving Company",
     },
     {
-      id: "museum",
+      slug: "museum",
       name: "Museum",
     },
     {
-      id: "nightclub",
+      slug: "nightclub",
       name: "Night Club",
     },
     {
-      id: "painter",
+      slug: "painter",
       name: "Painter",
     },
     {
-      id: "park",
+      slug: "park",
       name: "Park",
     },
     {
-      id: "parking",
+      slug: "parking",
       name: "Parking",
     },
     {
-      id: "petstore",
+      slug: "petstore",
       name: "Pet Store",
     },
     {
-      id: "pharmacy",
+      slug: "pharmacy",
       name: "Pharmacy",
     },
     {
-      id: "physiotherapist",
+      slug: "physiotherapist",
       name: "Physiotherapist",
     },
     {
-      id: "plumber",
+      slug: "plumber",
       name: "Plumber",
     },
     {
-      id: "police",
+      slug: "police",
       name: "Police",
     },
     {
-      id: "postoffice",
+      slug: "postoffice",
       name: "Post Office",
     },
     {
-      id: "primaryschool",
+      slug: "primaryschool",
       name: "Primary School",
     },
     {
-      id: "realestateagency",
+      slug: "realestateagency",
       name: "Real Estate Agency",
     },
     {
-      id: "restaurant",
+      slug: "restaurant",
       name: "Restaurant",
     },
     {
-      id: "roofingcontractor",
+      slug: "roofingcontractor",
       name: "Roofing Contractor",
     },
     {
-      id: "rvpark",
+      slug: "rvpark",
       name: "Rv Park",
     },
     {
-      id: "school",
+      slug: "school",
       name: "School",
     },
     {
-      id: "secondaryschool",
+      slug: "secondaryschool",
       name: "Secondary School",
     },
     {
-      id: "shoestore",
+      slug: "shoestore",
       name: "Shoe Store",
     },
     {
-      id: "shoppingmall",
+      slug: "shoppingmall",
       name: "Shopping Mall",
     },
     {
-      id: "spa",
+      slug: "spa",
       name: "Spa",
     },
     {
-      id: "stadium",
+      slug: "stadium",
       name: "Stadium",
     },
     {
-      id: "storage",
+      slug: "storage",
       name: "Storage",
     },
     {
-      id: "store",
+      slug: "store",
       name: "Store",
     },
     {
-      id: "subwaystation",
+      slug: "subwaystation",
       name: "Subway Station",
     },
     {
-      id: "supermarket",
+      slug: "supermarket",
       name: "Supermarket",
     },
     {
-      id: "synagogue",
+      slug: "synagogue",
       name: "Synagogue",
     },
     {
-      id: "taxistand",
+      slug: "taxistand",
       name: "Taxi Stand",
     },
     {
-      id: "touristattraction",
+      slug: "touristattraction",
       name: "Tourist Attraction",
     },
     {
-      id: "trainstation",
+      slug: "trainstation",
       name: "Train Station",
     },
     {
-      id: "transitstation",
+      slug: "transitstation",
       name: "Transit Station",
     },
     {
-      id: "travelagency",
+      slug: "travelagency",
       name: "Travel Agency",
     },
     {
-      id: "university",
+      slug: "university",
       name: "University",
     },
     {
-      id: "veterinarycare",
+      slug: "veterinarycare",
       name: "Veterinary Care",
     },
     {
-      id: "zoo",
+      slug: "zoo",
       name: "Zoo",
     },
   ];
@@ -391,7 +403,7 @@ export default async function run(prisma: PrismaClient) {
   await Promise.all(
     categories.map(async (category) => {
       await prisma.category.upsert({
-        where: { id: category.id },
+        where: { slug: category.slug },
         update: category,
         create: category,
       });
