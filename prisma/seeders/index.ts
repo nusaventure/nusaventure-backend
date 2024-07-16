@@ -15,7 +15,7 @@ const prisma = new PrismaClient();
     await cities(prisma);
     await categories(prisma);
     await places(prisma);
-    await placeImages(prisma);
+    // await placeImages(prisma);
   } catch (e) {
     console.error(e);
     process.exit(1);

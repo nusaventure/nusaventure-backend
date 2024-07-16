@@ -79,25 +79,29 @@ model Category {
 }
 
 model Place {
-  id          String   @id @default(cuid())
-  countryId   String
-  country     Country  @relation(fields: [countryId], references: [id])
-  stateId     String
-  state       State    @relation(fields: [stateId], references: [id])
-  cityId      String
-  city        City     @relation(fields: [cityId], references: [id])
-  categoryId  String
-  category    Category @relation(fields: [categoryId], references: [id])
+  id String @id @default(cuid())
+
   title       String
-  slug        String   @unique
-  description String   @db.Text
-  imageUrl    String   @db.Text
+  slug        String @unique
+  description String @db.Text
+  imageUrl    String @db.Text
   latitude    Float
   longitude   Float
   zoom        Float
-  address     String   @db.Text
+  address     String @db.Text
 
   images PlaceImage[]
+
+  countryId String
+  country   Country @relation(fields: [countryId], references: [id])
+
+  stateId String
+  state   State  @relation(fields: [stateId], references: [id])
+
+  cityId String
+  city   City   @relation(fields: [cityId], references: [id])
+
+  categories Category[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt

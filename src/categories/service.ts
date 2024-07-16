@@ -6,6 +6,7 @@ export async function getAll(query?: z.infer<typeof QueryCategorySchema>) {
   return await prisma.category.findMany({
     select: {
       id: true,
+      slug: true,
       name: true,
     },
     where: {

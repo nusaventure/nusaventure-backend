@@ -3,6 +3,18 @@ import { Prisma, PrismaClient } from "@prisma/client";
 export default async function run(prisma: PrismaClient) {
   const categories: Array<Prisma.CategoryCreateManyInput> = [
     {
+      slug: "beach",
+      name: "Beach",
+    },
+    {
+      slug: "mountain",
+      name: "Mountain",
+    },
+    {
+      slug: "historicalsites",
+      name: "Historical Sites",
+    },
+    {
       slug: "accounting",
       name: "Accounting",
     },
