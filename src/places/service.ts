@@ -43,20 +43,10 @@ export async function getAll(query: z.infer<typeof PlaceCitySchema>) {
   return await prisma.place.findMany({
     select: placeResponseData,
     where: {
-      AND: [
-        {
-          countryId: query.countryId,
-        },
-        {
-          stateId: query.stateId,
-        },
-        {
-          cityId: query.cityId,
-        },
-        {
-          categoryId: query.categoryId,
-        },
-      ],
+      countryId: query.countryId,
+      stateId: query.stateId,
+      cityId: query.cityId,
+      categoryId: query.categoryId,
       OR: [
         {
           title: {

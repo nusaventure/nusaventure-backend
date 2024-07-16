@@ -58,8 +58,7 @@ export const placeRoute = new OpenAPIHono()
       const data = await placeService.getDetailPlaceBySlug(slug);
 
       if (!data) {
-        c.status(404);
-        return c.json({ message: "Place not found" });
+        return c.json({ message: "Place not found" }, 404);
       }
 
       return c.json({
