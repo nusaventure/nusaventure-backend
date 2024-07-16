@@ -53,7 +53,7 @@ export const placeRoute = new OpenAPIHono()
       tags: API_TAG,
     },
     async (c) => {
-      const slug = c.req.param("slug")?.toString();
+      const slug = c.req.param("slug")?.toString()!;
 
       const data = await placeService.getDetailPlaceBySlug(slug);
 

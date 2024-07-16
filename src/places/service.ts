@@ -1,8 +1,9 @@
 import { z } from "@hono/zod-openapi";
+import { Prisma } from "@prisma/client";
 import { prisma } from "../lib/db";
 import { PlaceCitySchema } from "./schema";
 
-const placeResponseData = {
+const placeResponseData: Prisma.PlaceSelect = {
   id: true,
   title: true,
   slug: true,
@@ -69,10 +70,13 @@ export async function getAll(query: z.infer<typeof PlaceCitySchema>) {
         },
       },
     },
+    orderBy: {
+      title: "asc",
+    },
   });
 }
 
-export async function getDetailPlaceBySlug(slug: string | undefined) {
+export async function getDetailPlaceBySlug(slug: string) {
   return await prisma.place.findUnique({
     where: { slug },
     select: {
