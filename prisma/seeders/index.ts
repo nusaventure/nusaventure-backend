@@ -1,16 +1,18 @@
 import { PrismaClient } from "@prisma/client";
-import countries from "./countries";
-import states from "./states";
-import cities from "./cities";
 import categories from "./categories";
-import places from "./places";
+import cities from "./cities";
+import countries from "./countries";
+import islands from "./islands";
 import placeImages from "./placeImages";
+import places from "./places";
+import states from "./states";
 
 const prisma = new PrismaClient();
 
 (async function () {
   try {
     await countries(prisma);
+    await islands(prisma);
     await states(prisma);
     await cities(prisma);
     await categories(prisma);
