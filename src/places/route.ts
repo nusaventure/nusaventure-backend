@@ -46,14 +46,14 @@ export const placeRoute = new OpenAPIHono()
         200: {
           description: "Successfully get place details",
         },
-        400: {
+        404: {
           description: "Place not found",
         },
       },
       tags: API_TAG,
     },
     async (c) => {
-      const slug = c.req.param("slug")?.toString()!;
+      const slug = c.req.param("slug")!;
 
       const data = await placeService.getDetailPlaceBySlug(slug);
 
