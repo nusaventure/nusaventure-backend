@@ -24,7 +24,9 @@ stateRoute.openapi(
     tags: API_TAG,
   },
   async (c) => {
-    const data = await stateService.getAll(c.req.query() as z.infer<typeof QueryStateSchema>);
+    const data = await stateService.getAll(
+      c.req.query() as z.infer<typeof QueryStateSchema>
+    );
 
     return c.json({
       message: "Success",

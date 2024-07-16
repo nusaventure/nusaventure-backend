@@ -1,6 +1,6 @@
-import { z } from "@hono/zod-openapi"
-import { prisma } from "../lib/db"
-import { PlaceCitySchema } from "./schema"
+import { z } from "@hono/zod-openapi";
+import { prisma } from "../lib/db";
+import { PlaceCitySchema } from "./schema";
 
 const placeResponseData = {
   id: true,
@@ -36,7 +36,7 @@ const placeResponseData = {
       name: true,
     },
   },
-}
+};
 
 export async function getAll(query: z.infer<typeof PlaceCitySchema>) {
   return await prisma.place.findMany({
@@ -69,7 +69,7 @@ export async function getAll(query: z.infer<typeof PlaceCitySchema>) {
         },
       },
     },
-  })
+  });
 }
 
 export async function getDetailPlaceBySlug(slug: string | undefined) {
@@ -85,5 +85,5 @@ export async function getDetailPlaceBySlug(slug: string | undefined) {
         },
       },
     },
-  })
+  });
 }

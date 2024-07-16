@@ -1,6 +1,6 @@
-import { z } from "zod"
-import { QueryCitySchema } from "./schema"
-import { prisma } from "../lib/db"
+import { z } from "zod";
+import { QueryCitySchema } from "./schema";
+import { prisma } from "../lib/db";
 
 export async function getAll(query: z.infer<typeof QueryCitySchema>) {
   return await prisma.city.findMany({
@@ -20,5 +20,5 @@ export async function getAll(query: z.infer<typeof QueryCitySchema>) {
         mode: "insensitive",
       },
     },
-  })
+  });
 }

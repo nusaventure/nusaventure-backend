@@ -1,10 +1,10 @@
-import { OpenAPIHono, z } from "@hono/zod-openapi"
-import { QueryCitySchema } from "./schema"
-import * as cityService from "./service"
+import { OpenAPIHono, z } from "@hono/zod-openapi";
+import { QueryCitySchema } from "./schema";
+import * as cityService from "./service";
 
-const API_TAG = ["Cities"]
+const API_TAG = ["Cities"];
 
-export const citiesRoute = new OpenAPIHono()
+export const citiesRoute = new OpenAPIHono();
 
 // GET ALL CITIES
 citiesRoute.openapi(
@@ -25,11 +25,11 @@ citiesRoute.openapi(
   async (c) => {
     const data = await cityService.getAll(
       c.req.query() as z.infer<typeof QueryCitySchema>
-    )
+    );
 
     return c.json({
       message: "Successfully get the cities data",
       data,
-    })
+    });
   }
-)
+);
