@@ -18,5 +18,8 @@ export async function getAll(query?: z.infer<typeof QueryCountrySchema>) {
         mode: "insensitive",
       },
     },
+    orderBy: {
+      name: "asc",
+    },
   });
 }
