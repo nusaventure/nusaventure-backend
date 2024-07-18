@@ -19,8 +19,8 @@ For a more interactive experience, you can use SwaggerUI. It provides a user-fri
 
 You can also access the following:
 
-- OpenAPI Specification: https://nusaventure-backend.onrender.com/api-spec
-- SwaggerUI: https://nusaventure-backend.onrender.com/api
+- OpenAPI Specification: https://api.nusaventure.com/api-spec
+- SwaggerUI: https://api.nusaventure.com/api
 
 ## Database Design
 
