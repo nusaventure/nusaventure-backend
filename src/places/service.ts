@@ -125,3 +125,29 @@ export async function getFeaturedPlaces() {
     },
   });
 }
+
+export async function getTopStats() {
+  const [islands, cities, places] = await Promise.all([
+    prisma.island.count({
+      where: {
+        places: {
+          some: {},
+        },
+      },
+    }),
+    prisma.city.count({
+      where: {
+        places: {
+          some: {},
+        },
+      },
+    }),
+    prisma.place.count(),
+  ]);
+
+  return {
+    islands,
+    cities,
+    places,
+  };
+}
