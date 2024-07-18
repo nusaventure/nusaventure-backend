@@ -6,19 +6,19 @@ export default async function run(prisma: PrismaClient) {
       slug: "beach",
       name: "Beach",
       isFeatured: true,
-      position: null,
+      position: 1,
     },
     {
       slug: "beach",
       name: "Beach",
       isFeatured: true,
-      position: null,
+      position: 2,
     },
     {
       slug: "culinary",
       name: "Culinary",
       isFeatured: true,
-      position: null,
+      position: 3,
     },
     {
       slug: "historicalsites",

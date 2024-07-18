@@ -36,7 +36,7 @@ categoryRoute.openapi(
 categoryRoute.openapi(
   {
     method: "get",
-    path: "/",
+    path: "/featured",
     description: "Featured categories",
     responses: {
       200: {
