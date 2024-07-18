@@ -33,6 +33,29 @@ export const placeRoute = new OpenAPIHono()
     }
   )
 
+  // GET FEATURED PLACES
+  .openapi(
+    {
+      method: "get",
+      path: "/featured",
+      description: "Get all featured places",
+      responses: {
+        200: {
+          description: "List of featured places",
+        },
+      },
+      tags: API_TAG,
+    },
+    async (c) => {
+      const data = await placeService.getFeaturedPlaces();
+
+      return c.json({
+        message: "Successfully get the featured places",
+        data,
+      });
+    }
+  )
+
   // GET PLACE BY SLUG
   .openapi(
     {

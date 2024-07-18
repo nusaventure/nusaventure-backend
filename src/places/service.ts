@@ -102,3 +102,26 @@ export async function getDetailPlaceBySlug(slug: string) {
     },
   });
 }
+
+export async function getFeaturedPlaces() {
+  return await prisma.place.findMany({
+    where: {
+      isFeatured: true,
+    },
+    select: {
+      id: true,
+      title: true,
+      slug: true,
+      imageUrl: true,
+      position: true,
+      city: {
+        select: {
+          name: true,
+        },
+      },
+    },
+    orderBy: {
+      position: "asc",
+    },
+  });
+}
