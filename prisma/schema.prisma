@@ -97,8 +97,8 @@ model City {
 model Category {
   id String @id @default(cuid())
 
-  slug       String  @unique
-  name       String
+  slug String @unique
+  name String
   isFeatured Boolean @default(false)
   position   Int?
 
@@ -114,36 +114,25 @@ model Place {
   id String @id @default(cuid())
 
   title       String
-  slug        String @unique
-  description String @db.Text
-  imageUrl    String @db.Text
+  slug        String  @unique
+  description String  @db.Text
+  imageUrl    String  @db.Text
   latitude    Float
   longitude   Float
   zoom        Float
-  address     String @db.Text
+  address     String  @db.Text
 
-  country    Country      @relation(fields: [countryId], references: [id])
-  countryId  String
-  state      State        @relation(fields: [stateId], references: [id])
-  stateId    String
-  city       City         @relation(fields: [cityId], references: [id])
-  cityId     String
-  category   Category     @relation(fields: [categoryId], references: [id])
-  categoryId String
-  island     Island?      @relation(fields: [islandId], references: [id])
-  islandId   String?
-  images     PlaceImage[]
+  country   Country      @relation(fields: [countryId], references: [id])
+  countryId String
+  state     State        @relation(fields: [stateId], references: [id])
+  stateId   String
+  city      City         @relation(fields: [cityId], references: [id])
+  cityId    String
+  island    Island?      @relation(fields: [islandId], references: [id])
+  islandId  String?
+  images    PlaceImage[]
 
-  // countryId String
-  // country   Country @relation(fields: [countryId], references: [id])
-
-  // stateId String
-  // state   State  @relation(fields: [stateId], references: [id])
-
-  // cityId String
-  // city   City   @relation(fields: [cityId], references: [id])
-
-  // categories Category[]
+  categories Category[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt

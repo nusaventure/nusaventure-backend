@@ -5,7 +5,6 @@ import { QueryCategorySchema } from "./schema";
 const API_TAG = ["Categories"];
 
 const categoryRoute = new OpenAPIHono();
-const featuredCategoryRoute = new OpenAPIHono();
 
 // GET ALL CATEGORIES
 categoryRoute.openapi(
@@ -33,15 +32,12 @@ categoryRoute.openapi(
   }
 );
 
-//GET FEATURED CATEGORY
-featuredCategoryRoute.openapi(
+// GET FEATURED CATEGORY
+categoryRoute.openapi(
   {
     method: "get",
     path: "/",
     description: "Featured categories",
-    request: {
-      query: QueryCategorySchema,
-    },
     responses: {
       200: {
         description: "Featured categories",
@@ -50,7 +46,7 @@ featuredCategoryRoute.openapi(
     tags: API_TAG,
   },
   async (c) => {
-    const data = await categoryService.getFeaturedCategory(c.req.query());
+    const data = await categoryService.getFeaturedCategory();
 
     return c.json({
       message: "Success",
@@ -59,4 +55,4 @@ featuredCategoryRoute.openapi(
   }
 );
 
-export { categoryRoute, featuredCategoryRoute };
+export { categoryRoute };

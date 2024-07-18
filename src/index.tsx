@@ -1,7 +1,7 @@
 import { swaggerUI } from "@hono/swagger-ui";
 import { OpenAPIHono } from "@hono/zod-openapi";
 import { cors } from "hono/cors";
-import { categoryRoute, featuredCategoryRoute } from "./categories/route";
+import { categoryRoute } from "./categories/route";
 import { citiesRoute } from "./cities/route";
 import { countryRoute } from "./countries/route";
 import { placeRoute } from "./places/route";
@@ -38,7 +38,6 @@ app.route("/countries", countryRoute);
 app.route("/states", stateRoute);
 app.route("/cities", citiesRoute);
 app.route("/categories", categoryRoute);
-app.route("/categories/featured", featuredCategoryRoute);
 
 // WELCOME PAGE
 app.get("/", (c) =>

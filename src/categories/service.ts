@@ -20,9 +20,7 @@ export async function getAll(query?: z.infer<typeof QueryCategorySchema>) {
   });
 }
 
-export async function getFeaturedCategory(
-  query?: z.infer<typeof QueryCategorySchema>
-) {
+export async function getFeaturedCategory() {
   return await prisma.category.findMany({
     select: {
       id: true,
@@ -33,10 +31,6 @@ export async function getFeaturedCategory(
     },
     where: {
       isFeatured: true,
-      name: {
-        contains: query?.search,
-        mode: "insensitive",
-      },
     },
     orderBy: {
       position: "asc",
