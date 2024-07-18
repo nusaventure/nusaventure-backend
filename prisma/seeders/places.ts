@@ -1,14 +1,15 @@
 import { Prisma, PrismaClient } from "@prisma/client";
 
-type PlaceSeeder = Omit<Prisma.PlaceCreateManyInput, "categoryId"> & {
+type PlaceSeeder = Prisma.PlaceCreateManyInput & {
   categorySlugs: string[];
+  islandSlug?: string;
 };
 
 export default async function run(prisma: PrismaClient) {
   const places: Array<PlaceSeeder> = [
     {
       countryId: "102",
-      islandId: "clyrb3jup00098vfrpaei32yf",
+      islandSlug: "jawa",
       stateId: "1825",
       cityId: "56731",
       categorySlugs: ["localgovernmentoffice", "historicalsites"],
@@ -44,7 +45,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
-      islandId: "clyrb3jup00098vfrpaei32yf",
+      islandSlug: "jawa",
       stateId: "1829",
       cityId: "56816",
       categorySlugs: ["historicalsites"],
@@ -64,7 +65,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
-      islandId: "clyrb3jus000h8vfrd9x6acc5",
+      islandSlug: "bali",
       stateId: "1826",
       cityId: "57013",
       categorySlugs: ["historicalsites"],
@@ -83,7 +84,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
-      islandId: "clyrb3jus000h8vfrd9x6acc5",
+      islandSlug: "bali",
       stateId: "1805",
       cityId: "56723",
       categorySlugs: ["historicalsites"],
@@ -103,7 +104,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
-      islandId: "clyrb3jus000h8vfrd9x6acc5",
+      islandSlug: "bali",
       stateId: "1827",
       cityId: "56803",
       categorySlugs: ["historicalsites"],
@@ -123,9 +124,25 @@ export default async function run(prisma: PrismaClient) {
     },
   ];
 
+  const islands = await prisma.island.findMany({
+    select: {
+      id: true,
+      slug: true,
+    },
+    where: {
+      slug: {
+        in: places
+          .map((place) => place.islandSlug)
+          .filter((slug) => slug !== undefined),
+      },
+    },
+  });
+
   await Promise.all(
     places.map(async (placeData) => {
-      const { categorySlugs, ...place } = placeData;
+      const { categorySlugs, islandSlug, ...place } = placeData;
+
+      const islandId = islands.find((island) => island.slug === islandSlug)?.id;
 
       await prisma.place.upsert({
         where: { slug: place.slug },
@@ -135,6 +152,7 @@ export default async function run(prisma: PrismaClient) {
           categories: {
             connect: categorySlugs.map((slug) => ({ slug })),
           },
+          islandId,
         },
       });
     })
