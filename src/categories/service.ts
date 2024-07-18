@@ -8,12 +8,38 @@ export async function getAll(query?: z.infer<typeof QueryCategorySchema>) {
       id: true,
       slug: true,
       name: true,
+      isFeatured: true,
+      position: true,
     },
     where: {
       name: {
         contains: query?.search,
         mode: "insensitive",
       },
+    },
+  });
+}
+
+export async function getFeaturedCategory(
+  query?: z.infer<typeof QueryCategorySchema>
+) {
+  return await prisma.category.findMany({
+    select: {
+      id: true,
+      slug: true,
+      name: true,
+      isFeatured: true,
+      position: true,
+    },
+    where: {
+      isFeatured: true,
+      name: {
+        contains: query?.search,
+        mode: "insensitive",
+      },
+    },
+    orderBy: {
+      position: "asc",
     },
   });
 }

@@ -97,8 +97,10 @@ model City {
 model Category {
   id String @id @default(cuid())
 
-  slug String @unique
-  name String
+  slug       String  @unique
+  name       String
+  isFeatured Boolean @default(false)
+  position   Int?
 
   places Place[]
 
@@ -132,16 +134,16 @@ model Place {
   islandId   String?
   images     PlaceImage[]
 
-  countryId String
-  country   Country @relation(fields: [countryId], references: [id])
+  // countryId String
+  // country   Country @relation(fields: [countryId], references: [id])
 
-  stateId String
-  state   State  @relation(fields: [stateId], references: [id])
+  // stateId String
+  // state   State  @relation(fields: [stateId], references: [id])
 
-  cityId String
-  city   City   @relation(fields: [cityId], references: [id])
+  // cityId String
+  // city   City   @relation(fields: [cityId], references: [id])
 
-  categories Category[]
+  // categories Category[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
