@@ -112,34 +112,25 @@ model Place {
   id String @id @default(cuid())
 
   title       String
-  slug        String @unique
-  description String @db.Text
-  imageUrl    String @db.Text
+  slug        String  @unique
+  description String  @db.Text
+  imageUrl    String  @db.Text
   latitude    Float
   longitude   Float
   zoom        Float
-  address     String @db.Text
+  address     String  @db.Text
+  isFeatured  Boolean @default(false)
+  position    Int?
 
-  country    Country      @relation(fields: [countryId], references: [id])
-  countryId  String
-  state      State        @relation(fields: [stateId], references: [id])
-  stateId    String
-  city       City         @relation(fields: [cityId], references: [id])
-  cityId     String
-  category   Category     @relation(fields: [categoryId], references: [id])
-  categoryId String
-  island     Island?      @relation(fields: [islandId], references: [id])
-  islandId   String?
-  images     PlaceImage[]
-
+  country   Country      @relation(fields: [countryId], references: [id])
   countryId String
-  country   Country @relation(fields: [countryId], references: [id])
-
-  stateId String
-  state   State  @relation(fields: [stateId], references: [id])
-
-  cityId String
-  city   City   @relation(fields: [cityId], references: [id])
+  state     State        @relation(fields: [stateId], references: [id])
+  stateId   String
+  city      City         @relation(fields: [cityId], references: [id])
+  cityId    String
+  island    Island?      @relation(fields: [islandId], references: [id])
+  islandId  String?
+  images    PlaceImage[]
 
   categories Category[]
 
