@@ -27,8 +27,8 @@ export default async function run(prisma: PrismaClient) {
       position: 4,
     },
     {
-      slug: "tample",
-      name: "Tample",
+      slug: "temple",
+      name: "Temple",
       isFeatured: true,
       position: 5,
     },
@@ -63,7 +63,7 @@ export default async function run(prisma: PrismaClient) {
       position: 10,
     },
     {
-      slug: "shoppingmall",
+      slug: "shopping",
       name: "Shopping Mall",
       isFeatured: true,
       position: 11,
@@ -86,10 +86,15 @@ export default async function run(prisma: PrismaClient) {
       isFeatured: false,
       position: null,
     },
-
     {
       slug: "aquarium",
       name: "Aquarium",
+      isFeatured: false,
+      position: null,
+    },
+    {
+      slug: "volcano",
+      name: "Volcano",
       isFeatured: false,
       position: null,
     },
@@ -106,14 +111,44 @@ export default async function run(prisma: PrismaClient) {
       position: null,
     },
     {
+      slug: "waterfall",
+      name: "Waterfall",
+      isFeatured: false,
+      position: null,
+    },
+    {
       slug: "bank",
       name: "Bank",
       isFeatured: false,
       position: null,
     },
     {
+      slug: "nationalpark",
+      name: "National Park",
+      isFeatured: false,
+      position: null,
+    },
+    {
+      slug: "island",
+      name: "Island",
+      isFeatured: false,
+      position: null,
+    },
+    {
       slug: "bar",
       name: "Bar",
+      isFeatured: false,
+      position: null,
+    },
+    {
+      slug: "lake",
+      name: "Lake",
+      isFeatured: false,
+      position: null,
+    },
+    {
+      slug: "cultural",
+      name: "Cultural",
       isFeatured: false,
       position: null,
     },
