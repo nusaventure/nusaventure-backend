@@ -30,7 +30,7 @@ app.doc31("/api-spec", {
 });
 
 // SWAGGER UI
-app.get("/api", swaggerUI({ url: "/api-spec" }));
+app.get("/ui", swaggerUI({ url: "/api-spec" }));
 
 // ROUTES
 app.route("/places", placeRoute);
