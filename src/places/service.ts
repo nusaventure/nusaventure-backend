@@ -102,3 +102,52 @@ export async function getDetailPlaceBySlug(slug: string) {
     },
   });
 }
+
+export async function getFeaturedPlaces() {
+  return await prisma.place.findMany({
+    where: {
+      isFeatured: true,
+    },
+    select: {
+      id: true,
+      title: true,
+      slug: true,
+      imageUrl: true,
+      position: true,
+      city: {
+        select: {
+          name: true,
+        },
+      },
+    },
+    orderBy: {
+      position: "asc",
+    },
+  });
+}
+
+export async function getTopStats() {
+  const [islands, cities, places] = await Promise.all([
+    prisma.island.count({
+      where: {
+        places: {
+          some: {},
+        },
+      },
+    }),
+    prisma.city.count({
+      where: {
+        places: {
+          some: {},
+        },
+      },
+    }),
+    prisma.place.count(),
+  ]);
+
+  return {
+    islands,
+    cities,
+    places,
+  };
+}

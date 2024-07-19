@@ -17,6 +17,9 @@ export async function getAll(query?: z.infer<typeof QueryCategorySchema>) {
         mode: "insensitive",
       },
     },
+    orderBy: {
+      name: "asc",
+    },
   });
 }
 

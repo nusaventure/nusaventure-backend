@@ -121,6 +121,8 @@ model Place {
   longitude   Float
   zoom        Float
   address     String  @db.Text
+  isFeatured  Boolean @default(false)
+  position    Int?
 
   country   Country      @relation(fields: [countryId], references: [id])
   countryId String
