@@ -15,12 +15,12 @@ Nusaventure REST API is a web service that provides access to a large collection
 
 The OpenAPI Specification for the Nusaventure API offers a detailed description of the API's services. It can be accessed at the path `/api-spec`.
 
-For a more interactive experience, you can use SwaggerUI. It provides a user-friendly interface for exploring and testing the API. You can access SwaggerUI at `/api`.
+For a more interactive experience, you can use SwaggerUI. It provides a user-friendly interface for exploring and testing the API. You can access SwaggerUI at `/ui`.
 
 You can also access the following:
 
-- OpenAPI Specification: https://nusaventure-backend.onrender.com/api-spec
-- SwaggerUI: https://nusaventure-backend.onrender.com/api
+- OpenAPI Specification: https://api.nusaventure.com/api-spec
+- SwaggerUI: https://api.nusaventure.com/ui
 
 ## Database Design
 

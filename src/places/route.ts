@@ -33,6 +33,52 @@ export const placeRoute = new OpenAPIHono()
     }
   )
 
+  // GET FEATURED PLACES
+  .openapi(
+    {
+      method: "get",
+      path: "/featured",
+      description: "Get all featured places",
+      responses: {
+        200: {
+          description: "List of featured places",
+        },
+      },
+      tags: API_TAG,
+    },
+    async (c) => {
+      const data = await placeService.getFeaturedPlaces();
+
+      return c.json({
+        message: "Successfully get the featured places",
+        data,
+      });
+    }
+  )
+
+  // GET TOP STATS
+  .openapi(
+    {
+      method: "get",
+      path: "/top-stats",
+      description: "Get statistics of favorite places",
+      responses: {
+        200: {
+          description: "Statistics of favorite places",
+        },
+      },
+      tags: API_TAG,
+    },
+    async (c) => {
+      const data = await placeService.getTopStats();
+
+      return c.json({
+        message: "Success",
+        data,
+      });
+    }
+  )
+
   // GET PLACE BY SLUG
   .openapi(
     {

@@ -32,4 +32,27 @@ categoryRoute.openapi(
   }
 );
 
+// GET FEATURED CATEGORY
+categoryRoute.openapi(
+  {
+    method: "get",
+    path: "/featured",
+    description: "Featured categories",
+    responses: {
+      200: {
+        description: "Featured categories",
+      },
+    },
+    tags: API_TAG,
+  },
+  async (c) => {
+    const data = await categoryService.getFeaturedCategory();
+
+    return c.json({
+      message: "Success",
+      data,
+    });
+  }
+);
+
 export { categoryRoute };

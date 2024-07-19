@@ -1,16 +1,18 @@
 import { Prisma, PrismaClient } from "@prisma/client";
 
-type PlaceSeeder = Omit<Prisma.PlaceCreateManyInput, "categoryId"> & {
+type PlaceSeeder = Prisma.PlaceCreateManyInput & {
   categorySlugs: string[];
+  islandSlug?: string;
 };
 
 export default async function run(prisma: PrismaClient) {
   const places: Array<PlaceSeeder> = [
     {
       countryId: "102",
+      islandSlug: "jawa",
       stateId: "1825",
       cityId: "56731",
-      categorySlugs: ["localgovernmentoffice"],
+      categorySlugs: ["localgovernmentoffice", "historicalsites"],
       title: "Gedung Sate",
       slug: "gedung-sate",
       description:
@@ -22,6 +24,8 @@ export default async function run(prisma: PrismaClient) {
       zoom: 14,
       address:
         "Jl. Diponegoro No.22, Citarum, Kec. Bandung Wetan, Kota Bandung, Jawa Barat 40115",
+      isFeatured: true,
+      position: 3,
     },
     {
       countryId: "102",
@@ -38,6 +42,87 @@ export default async function run(prisma: PrismaClient) {
       zoom: 14,
       address:
         "Jl. Cimincrang No.14, Cimenerang, Kec. Gedebage, Kota Bandung, Jawa Barat 40292",
+      isFeatured: true,
+      position: 6,
+    },
+    {
+      countryId: "102",
+      islandSlug: "jawa",
+      stateId: "1829",
+      cityId: "56816",
+      categorySlugs: ["historicalsites"],
+      title: "Tugu Yogyakarta",
+      slug: "tugu-yogyakarta",
+      description:
+        "White-&-gold landmark on a traffic island, dating from 1889 & floodlit after dark.",
+      imageUrl:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Yogyakarta_Indonesia_Tugu-Yogyakarta-01.jpg/800px-Yogyakarta_Indonesia_Tugu-Yogyakarta-01.jpg",
+      latitude: -7.7829749,
+      longitude: 110.3665674,
+      zoom: 19,
+      address:
+        "Jl. Jend. Sudirman, Gowongan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233",
+      isFeatured: true,
+      position: 1,
+    },
+    {
+      countryId: "102",
+      islandSlug: "bali",
+      stateId: "1826",
+      cityId: "57013",
+      categorySlugs: ["historicalsites"],
+      title: "Tanah Lot",
+      slug: "tanah-lot",
+      description:
+        "Traditional Balinese temple located on a small, rocky island & offering water vistas.",
+      imageUrl:
+        "https://cdn.pixabay.com/photo/2015/10/19/20/29/tanah-lot-996675_1280.jpg",
+      latitude: -8.6212003,
+      longitude: 115.0867082,
+      zoom: 20,
+      address: "Beraban, Kec. Kediri, Kabupaten Tabanan, Bali 82121",
+      isFeatured: true,
+      position: 2,
+    },
+    {
+      countryId: "102",
+      islandSlug: "bali",
+      stateId: "1805",
+      cityId: "56723",
+      categorySlugs: ["historicalsites"],
+      title: "Bundaran HI",
+      slug: "bundaran-hi",
+      description:
+        "The Selamat Datang Monument is located in the center of a roundabout known as Bundaran Hotel Indonesia or Bundaran HI (Indonesian for Hotel Indonesia Roundabout)",
+      imageUrl:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Jakarta_Bundaran_HI_.jpg/1200px-Jakarta_Bundaran_HI_.jpg",
+      latitude: -6.1949851,
+      longitude: 106.8221597,
+      zoom: 18,
+      address:
+        "Menteng, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta",
+      isFeatured: true,
+      position: 4,
+    },
+    {
+      countryId: "102",
+      islandSlug: "bali",
+      stateId: "1827",
+      cityId: "56803",
+      categorySlugs: ["historicalsites"],
+      title: "Monument Surabaya",
+      slug: "monument-surabaya",
+      description:
+        "Landmark statue symbolic of Surabaya city, featuring a shark & crocodile tussling amid seaweed.",
+      imageUrl:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Jakarta_Bundaran_HI_.jpg/1200px-Jakarta_Bundaran_HI_.jpg",
+      latitude: -7.2960492,
+      longitude: 112.7387012,
+      zoom: 18,
+      address:
+        "Jl. Diponegoro No.1-B, Darmo, Kec. Wonokromo, Surabaya, Jawa Timur 60241",
+      isFeatured: true,
+      position: 5,
     },
     {
       countryId: "102",
@@ -54,6 +139,8 @@ export default async function run(prisma: PrismaClient) {
       zoom: 14,
       address:
         "Kawasan Candi Borobudur, Borobudur, Magelang, Jawa Tengah 56553",
+      isFeatured: true,
+      position: 7,
     },
     {
       countryId: "102",
@@ -69,9 +156,12 @@ export default async function run(prisma: PrismaClient) {
       longitude: 110.3158671,
       zoom: 14,
       address: "Jl. Parangtritis Km. 28, Bantul, Yogyakarta 55772",
+      isFeatured: true,
+      position: 8,
     },
     {
       countryId: "102",
+      islandSlug: "jawa",
       stateId: "1829",
       cityId: "56637",
       categorySlugs: ["temple"],
@@ -85,6 +175,8 @@ export default async function run(prisma: PrismaClient) {
       zoom: 14,
       address:
         "Jl. Raya Solo - Yogyakarta No.16, Kranggan, Bokoharjo, Kec. Prambanan, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55572",
+      isFeatured: false,
+      position: 9,
     },
     {
       countryId: "102",
@@ -295,41 +387,57 @@ export default async function run(prisma: PrismaClient) {
       zoom: 14,
       address: "North Sumatra",
     },
-    {
-      countryId: "102",
-      stateId: "1814",
-      cityId: "56497",
-      categorySlugs: ["beach"],
-      title: "Tanjung Aan Beach",
-      slug: "tanjung-aan-beach",
-      description: "White sandy beach with clear blue waters.",
-      imageUrl:
-        "https://unsplash.com/photos/waves-crashing-on-rocks-ciCwCvA7xK4",
-      latitude: -8.9056,
-      longitude: 116.3304,
-      zoom: 14,
-      address: "Lombok, West Nusa Tenggara",
-    },
-    {
-      countryId: "102",
-      stateId: "1795",
-      cityId: "56662",
-      categorySlugs: ["cultural"],
-      title: "Toraja Traditional Houses",
-      slug: "toraja-traditional-houses",
-      description: "Traditional houses with unique architecture.",
-      imageUrl:
-        "https://upload.wikimedia.org/wikipedia/commons/b/b2/Traditional_Toraja_House.JPG",
-      latitude: -2.9667,
-      longitude: 119.8995,
-      zoom: 14,
-      address: "South Sulawesi",
-    },
+    // {
+    //   countryId: "102",
+    //   stateId: "1814",
+    //   cityId: "56497",
+    //   categorySlugs: ["beach"],
+    //   title: "Tanjung Aan Beach",
+    //   slug: "tanjung-aan-beach",
+    //   description: "White sandy beach with clear blue waters.",
+    //   imageUrl:
+    //     "https://unsplash.com/photos/waves-crashing-on-rocks-ciCwCvA7xK4",
+    //   latitude: -8.9056,
+    //   longitude: 116.3304,
+    //   zoom: 14,
+    //   address: "Lombok, West Nusa Tenggara",
+    // },
+    // {
+    //   countryId: "102",
+    //   stateId: "1795",
+    //   cityId: "56662",
+    //   categorySlugs: ["cultural"],
+    //   title: "Toraja Traditional Houses",
+    //   slug: "toraja-traditional-houses",
+    //   description: "Traditional houses with unique architecture.",
+    //   imageUrl:
+    //     "https://upload.wikimedia.org/wikipedia/commons/b/b2/Traditional_Toraja_House.JPG",
+    //   latitude: -2.9667,
+    //   longitude: 119.8995,
+    //   zoom: 14,
+    //   address: "South Sulawesi",
+    // },
   ];
+
+  const islands = await prisma.island.findMany({
+    select: {
+      id: true,
+      slug: true,
+    },
+    where: {
+      slug: {
+        in: places
+          .map((place) => place.islandSlug)
+          .filter((slug) => slug !== undefined),
+      },
+    },
+  });
 
   await Promise.all(
     places.map(async (placeData) => {
-      const { categorySlugs, ...place } = placeData;
+      const { categorySlugs, islandSlug, ...place } = placeData;
+
+      const islandId = islands.find((island) => island.slug === islandSlug)?.id;
 
       await prisma.place.upsert({
         where: { slug: place.slug },
@@ -339,6 +447,7 @@ export default async function run(prisma: PrismaClient) {
           categories: {
             connect: categorySlugs.map((slug) => ({ slug })),
           },
+          islandId,
         },
       });
     })
