@@ -4,6 +4,7 @@ import { cors } from "hono/cors";
 import { categoryRoute } from "./categories/route";
 import { citiesRoute } from "./cities/route";
 import { countryRoute } from "./countries/route";
+import { islandRoute } from "./islands/route";
 import { placeRoute } from "./places/route";
 import { stateRoute } from "./states/route";
 import { WelcomePage } from "./welcome";
@@ -38,6 +39,7 @@ app.route("/countries", countryRoute);
 app.route("/states", stateRoute);
 app.route("/cities", citiesRoute);
 app.route("/categories", categoryRoute);
+app.route("/islands", islandRoute);
 
 // WELCOME PAGE
 app.get("/", (c) =>
