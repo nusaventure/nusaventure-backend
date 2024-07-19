@@ -56,6 +56,29 @@ export const placeRoute = new OpenAPIHono()
     }
   )
 
+  // GET TOP STATS
+  .openapi(
+    {
+      method: "get",
+      path: "/top-stats",
+      description: "Get statistics of favorite places",
+      responses: {
+        200: {
+          description: "Statistics of favorite places",
+        },
+      },
+      tags: API_TAG,
+    },
+    async (c) => {
+      const data = await placeService.getTopStats();
+
+      return c.json({
+        message: "Success",
+        data,
+      });
+    }
+  )
+
   // GET PLACE BY SLUG
   .openapi(
     {
