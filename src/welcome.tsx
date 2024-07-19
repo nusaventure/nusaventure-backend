@@ -18,7 +18,7 @@ export function WelcomePage() {
           For a more interactive experience, you can use SwaggerUI. It provides
           a user-friendly interface for exploring and testing the API. You can
           access SwaggerUI at{" "}
-          <code className="bg-gray-200 rounded px-2 py-1">/api</code>.
+          <code className="bg-gray-200 rounded px-2 py-1">/ui</code>.
         </p>
         <p className="text-lg text-gray-700 mb-4">
           You can also access the following:
@@ -35,7 +35,7 @@ export function WelcomePage() {
           </li>
           <li>
             <a
-              href="/api"
+              href="/ui"
               target="_blank"
               className="text-blue-500 hover:underline"
             >
@@ -45,5 +45,5 @@ export function WelcomePage() {
         </ul>
       </div>
     </div>
-  )
+  );
 }
