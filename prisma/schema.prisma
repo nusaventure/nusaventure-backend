@@ -97,8 +97,8 @@ model City {
 model Category {
   id String @id @default(cuid())
 
-  slug String @unique
-  name String
+  slug       String  @unique
+  name       String
   isFeatured Boolean @default(false)
   position   Int?
 
