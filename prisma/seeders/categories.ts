@@ -656,6 +656,12 @@ export default async function run(prisma: PrismaClient) {
       isFeatured: false,
       position: null,
     },
+    {
+      slug: "water-park",
+      name: "Water Park",
+      isFeatured: false,
+      position: null,
+    },
   ];
 
   await Promise.all(
