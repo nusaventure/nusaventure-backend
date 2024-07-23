@@ -10,6 +10,45 @@ export default async function run(prisma: PrismaClient) {
     {
       countryId: "102",
       islandSlug: "jawa",
+      stateId: "1829",
+      cityId: "56816",
+      categorySlugs: ["historicalsites"],
+      title: "Tugu Yogyakarta",
+      slug: "tugu-yogyakarta",
+      description:
+        "White-&-gold landmark on a traffic island, dating from 1889 & floodlit after dark.",
+      imageUrl:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Yogyakarta_Indonesia_Tugu-Yogyakarta-01.jpg/800px-Yogyakarta_Indonesia_Tugu-Yogyakarta-01.jpg",
+      latitude: -7.7829749,
+      longitude: 110.3665674,
+      zoom: 19,
+      address:
+        "Jl. Jend. Sudirman, Gowongan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233",
+      isFeatured: true,
+      position: 1,
+    },
+    {
+      countryId: "102",
+      islandSlug: "bali",
+      stateId: "1826",
+      cityId: "57013",
+      categorySlugs: ["historicalsites"],
+      title: "Tanah Lot",
+      slug: "tanah-lot",
+      description:
+        "Traditional Balinese temple located on a small, rocky island & offering water vistas.",
+      imageUrl:
+        "https://cdn.pixabay.com/photo/2015/10/19/20/29/tanah-lot-996675_1280.jpg",
+      latitude: -8.6212003,
+      longitude: 115.0867082,
+      zoom: 20,
+      address: "Beraban, Kec. Kediri, Kabupaten Tabanan, Bali 82121",
+      isFeatured: false,
+      position: 7,
+    },
+    {
+      countryId: "102",
+      islandSlug: "jawa",
       stateId: "1825",
       cityId: "56731",
       categorySlugs: ["localgovernmentoffice", "historicalsites"],
@@ -47,45 +86,6 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
-      islandSlug: "jawa",
-      stateId: "1829",
-      cityId: "56816",
-      categorySlugs: ["historicalsites"],
-      title: "Tugu Yogyakarta",
-      slug: "tugu-yogyakarta",
-      description:
-        "White-&-gold landmark on a traffic island, dating from 1889 & floodlit after dark.",
-      imageUrl:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Yogyakarta_Indonesia_Tugu-Yogyakarta-01.jpg/800px-Yogyakarta_Indonesia_Tugu-Yogyakarta-01.jpg",
-      latitude: -7.7829749,
-      longitude: 110.3665674,
-      zoom: 19,
-      address:
-        "Jl. Jend. Sudirman, Gowongan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233",
-      isFeatured: true,
-      position: 1,
-    },
-    {
-      countryId: "102",
-      islandSlug: "bali",
-      stateId: "1826",
-      cityId: "57013",
-      categorySlugs: ["historicalsites"],
-      title: "Tanah Lot",
-      slug: "tanah-lot",
-      description:
-        "Traditional Balinese temple located on a small, rocky island & offering water vistas.",
-      imageUrl:
-        "https://cdn.pixabay.com/photo/2015/10/19/20/29/tanah-lot-996675_1280.jpg",
-      latitude: -8.6212003,
-      longitude: 115.0867082,
-      zoom: 20,
-      address: "Beraban, Kec. Kediri, Kabupaten Tabanan, Bali 82121",
-      isFeatured: true,
-      position: 2,
-    },
-    {
-      countryId: "102",
       islandSlug: "bali",
       stateId: "1805",
       cityId: "56723",
@@ -115,7 +115,7 @@ export default async function run(prisma: PrismaClient) {
       description:
         "Landmark statue symbolic of Surabaya city, featuring a shark & crocodile tussling amid seaweed.",
       imageUrl:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Jakarta_Bundaran_HI_.jpg/1200px-Jakarta_Bundaran_HI_.jpg",
+        "https://cdn0-production-images-kly.akamaized.net/Kk8K3Hudrxp1fVOn-1FpQlmPA-U=/800x800/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/763542/original/019580500_1415592126-1_travelmatekamu.jpg",
       latitude: -7.2960492,
       longitude: 112.7387012,
       zoom: 18,
@@ -133,14 +133,14 @@ export default async function run(prisma: PrismaClient) {
       slug: "borobudur-temple",
       description: "9th-century Mahayana Buddhist temple.",
       imageUrl:
-        "https://unsplash.com/photos/a-group-of-stone-structures-sitting-on-top-of-a-lush-green-field-n6asf0HAtm8",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Stupa_Borobudur.jpg/300px-Stupa_Borobudur.jpg",
       latitude: -7.6078745,
       longitude: 110.2037512,
       zoom: 14,
       address:
         "Kawasan Candi Borobudur, Borobudur, Magelang, Jawa Tengah 56553",
       isFeatured: true,
-      position: 7,
+      position: 2,
     },
     {
       countryId: "102",
@@ -151,12 +151,12 @@ export default async function run(prisma: PrismaClient) {
       slug: "parangtritis-beach",
       description: "Famous for its sunsets and mystic legends.",
       imageUrl:
-        "https://unsplash.com/photos/2-brown-horses-running-on-beach-during-daytime-tENrmGTfmo8",
+        "https://static.gatra.com/foldershared/images/2019/fuad/05-May/para.jpg",
       latitude: -8.0262033,
       longitude: 110.3158671,
       zoom: 14,
       address: "Jl. Parangtritis Km. 28, Bantul, Yogyakarta 55772",
-      isFeatured: true,
+      isFeatured: false,
       position: 8,
     },
     {
