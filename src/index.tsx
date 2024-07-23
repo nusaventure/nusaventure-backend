@@ -8,6 +8,7 @@ import { islandRoute } from "./islands/route";
 import { placeRoute } from "./places/route";
 import { stateRoute } from "./states/route";
 import { WelcomePage } from "./welcome";
+import { authRoute } from "./auth/route";
 
 const app = new OpenAPIHono({ strict: false });
 
@@ -40,6 +41,7 @@ app.route("/states", stateRoute);
 app.route("/cities", citiesRoute);
 app.route("/categories", categoryRoute);
 app.route("/islands", islandRoute);
+app.route("/auth", authRoute);
 
 // WELCOME PAGE
 app.get("/", (c) =>
