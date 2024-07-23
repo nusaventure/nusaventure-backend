@@ -1,6 +1,6 @@
 import { OpenAPIHono } from "@hono/zod-openapi";
 import * as countryService from "./service";
-import { RegisterSchema } from "./schema";
+import { LoginSchema, RegisterSchema } from "./schema";
 
 const API_TAG = ["Auth"];
 
@@ -26,7 +26,7 @@ authRoute.openapi(
       },
       400: {
         description: "Username or email already exists",
-      }
+      },
     },
     tags: API_TAG,
   },
@@ -38,9 +38,57 @@ authRoute.openapi(
         message: "Success",
       });
     } catch (error) {
+      return c.json(
+        {
+          message: (error as Error).message,
+        },
+        400
+      );
+    }
+  }
+);
+
+authRoute.openapi(
+  {
+    method: "post",
+    path: "/login",
+    description: "Login user",
+    request: {
+      body: {
+        content: {
+          "application/json": {
+            schema: LoginSchema,
+          },
+        },
+      },
+    },
+    responses: {
+      200: {
+        description: "Login successful",
+      },
+      400: {
+        description: "Username or password is incorrect",
+      },
+    },
+    tags: API_TAG,
+  },
+  async (c) => {
+    try {
+      const token = await countryService.login(await c.req.json());
+
       return c.json({
-        message: (error as Error).message,
-      }, 400);
+        message: "Success",
+        data: {
+          token,
+        },
+      });
+    } catch (error) {
+      return c.json(
+        {
+          message: (error as Error).message,
+        },
+        400
+      );
     }
   }
 );
