@@ -31,6 +31,17 @@ app.doc31("/api-spec", {
   },
 });
 
+// SECURITY SCHEMES
+app.openAPIRegistry.registerComponent(
+  "securitySchemes",
+  "AuthorizationBearer",
+  {
+    type: "http",
+    scheme: "bearer",
+    bearerFormat: "JWT",
+  }
+);
+
 // SWAGGER UI
 app.get("/ui", swaggerUI({ url: "/api-spec" }));
 

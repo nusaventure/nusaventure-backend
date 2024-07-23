@@ -1,10 +1,11 @@
 import { OpenAPIHono } from "@hono/zod-openapi";
 import * as countryService from "./service";
 import { LoginSchema, RegisterSchema } from "./schema";
+import { authBearer, AuthBearerEnv } from "../middleware/auth-bearer";
 
 const API_TAG = ["Auth"];
 
-const authRoute = new OpenAPIHono();
+const authRoute = new OpenAPIHono<AuthBearerEnv>();
 
 // USER REGISTRATION
 authRoute.openapi(
@@ -92,6 +93,40 @@ authRoute.openapi(
         400
       );
     }
+  }
+);
+
+// GET LOGGED IN USER
+authRoute.openapi(
+  {
+    method: "get",
+    path: "/me",
+    middleware: authBearer,
+    description: "Get logged in user",
+    security: [
+      {
+        AuthorizationBearer: [],
+      },
+    ],
+    responses: {
+      200: {
+        description: "User data",
+      },
+    },
+    tags: API_TAG,
+  },
+  async (c) => {
+    const user = c.var.user;
+
+    return c.json({
+      message: "Success",
+      data: {
+        id: user.id,
+        username: user.username,
+        firstName: user.firstName,
+        lastName: user.lastName,
+      },
+    });
   }
 );
 
