@@ -6,6 +6,7 @@ const API_TAG = ["Auth"];
 
 const authRoute = new OpenAPIHono();
 
+// USER REGISTRATION
 authRoute.openapi(
   {
     method: "post",
@@ -48,6 +49,7 @@ authRoute.openapi(
   }
 );
 
+// USER LOGIN
 authRoute.openapi(
   {
     method: "post",
