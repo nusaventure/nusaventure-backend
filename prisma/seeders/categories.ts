@@ -1,6 +1,8 @@
 import { Prisma, PrismaClient } from "@prisma/client";
 
 export default async function run(prisma: PrismaClient) {
+  console.info("Seed categories...");
+
   const categories: Array<Prisma.CategoryCreateManyInput> = [
     {
       slug: "beach",
@@ -11,7 +13,7 @@ export default async function run(prisma: PrismaClient) {
     {
       slug: "mountain",
       name: "Mountain",
-      isFeatured: false,
+      isFeatured: true,
       position: 2,
     },
     {
