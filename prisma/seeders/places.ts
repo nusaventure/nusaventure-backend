@@ -853,7 +853,7 @@ export default async function run(prisma: PrismaClient) {
       slug: "atuh-beach",
       description: "Scenic beach on Nusa Penida.",
       imageUrl:
-        "https://ucarecdn.com/3a6f53c5-6ef1-4a72-9b8d-d5eb2b9fe9d7/-/preview/400x300/",
+        "https://ucarecdn.com/3a6f53c5-6ef1-4a72-9b8d-d5eb2b9fe9d7/-/scale_crop/400x300/",
       latitude: -8.7733901,
       longitude: 115.611519,
       zoom: 14,
