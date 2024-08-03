@@ -79,6 +79,16 @@ export async function getAll(query: z.infer<typeof PlaceCitySchema>) {
             },
           },
         },
+        {
+          categories: {
+            some: {
+              name: {
+                contains: query.search,
+                mode: "insensitive",
+              },
+            },
+          },
+        },
       ],
     },
     orderBy: {
@@ -108,18 +118,7 @@ export async function getFeaturedPlaces() {
     where: {
       isFeatured: true,
     },
-    select: {
-      id: true,
-      title: true,
-      slug: true,
-      imageUrl: true,
-      position: true,
-      city: {
-        select: {
-          name: true,
-        },
-      },
-    },
+    select: placeResponseData,
     orderBy: {
       position: "asc",
     },
