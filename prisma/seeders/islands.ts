@@ -1,6 +1,8 @@
 import { Prisma, PrismaClient } from "@prisma/client";
 
 export default async function run(prisma: PrismaClient) {
+  console.info("Seed islands...");
+
   const islands: Array<Prisma.IslandCreateManyInput> = [
     {
       countryId: "102",

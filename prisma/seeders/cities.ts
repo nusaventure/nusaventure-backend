@@ -1,6 +1,8 @@
 import { Prisma, PrismaClient } from "@prisma/client";
 
 export default async function run(prisma: PrismaClient) {
+  console.info("Seed cities...");
+
   const cities: Array<Prisma.CityCreateManyInput> = [
     {
       id: "56193",

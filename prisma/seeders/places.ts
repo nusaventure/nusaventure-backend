@@ -6,6 +6,8 @@ type PlaceSeeder = Prisma.PlaceCreateManyInput & {
 };
 
 export default async function run(prisma: PrismaClient) {
+  console.info("Seed places...");
+
   const places: Array<PlaceSeeder> = [
     {
       countryId: "102",

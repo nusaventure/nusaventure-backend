@@ -1,6 +1,8 @@
 import { Prisma, PrismaClient } from "@prisma/client";
 
 export default async function run(prisma: PrismaClient) {
+  console.info("Seed states...");
+
   const states: Array<Prisma.StateCreateManyInput> = [
     {
       id: "1822",
