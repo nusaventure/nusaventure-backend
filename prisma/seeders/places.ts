@@ -68,6 +68,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "jawa",
       stateId: "1825",
       cityId: "56731",
       categorySlugs: ["mosque", "historicalsites"],
@@ -86,7 +87,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
-      islandSlug: "bali",
+      islandSlug: "jawa",
       stateId: "1805",
       cityId: "56723",
       categorySlugs: ["historicalsites"],
@@ -106,7 +107,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
-      islandSlug: "bali",
+      islandSlug: "jawa",
       stateId: "1827",
       cityId: "56803",
       categorySlugs: ["historicalsites"],
@@ -126,6 +127,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "jawa",
       stateId: "1802",
       cityId: "56505",
       categorySlugs: ["historicalsites"],
@@ -144,6 +146,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "jawa",
       stateId: "1829",
       cityId: "56338",
       categorySlugs: ["beach"],
@@ -180,6 +183,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "komodo",
       stateId: "1818",
       cityId: "56721",
       categorySlugs: ["nationalpark"],
@@ -195,6 +199,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "bali",
       stateId: "1826",
       cityId: "56322",
       categorySlugs: ["beach"],
@@ -210,6 +215,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "bali",
       stateId: "1826",
       cityId: "56827",
       categorySlugs: ["temple"],
@@ -225,6 +231,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "jawa",
       stateId: "1805",
       cityId: "56723",
       categorySlugs: ["historicalsites", "museum"],
@@ -241,6 +248,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "jawa",
       stateId: "1805",
       cityId: "56726",
       categorySlugs: ["museum"],
@@ -257,6 +265,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "jawa",
       stateId: "1805",
       cityId: "56723",
       categorySlugs: ["shopping"],
@@ -273,6 +282,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "jawa",
       stateId: "1827",
       cityId: "56600",
       categorySlugs: ["volcano"],
@@ -288,6 +298,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "komodo",
       stateId: "1818",
       cityId: "56721",
       categorySlugs: ["beach"],
@@ -303,6 +314,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "jawa",
       stateId: "1827",
       cityId: "56500",
       categorySlugs: ["waterfall"],
@@ -319,6 +331,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "jawa",
       stateId: "1827",
       cityId: "56600",
       categorySlugs: ["nationalpark"],
@@ -335,6 +348,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "lombok",
       stateId: "1814",
       cityId: "56499",
       categorySlugs: ["island"],
@@ -351,6 +365,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "bali",
       stateId: "1826",
       cityId: "56460",
       categorySlugs: ["island"],
@@ -366,6 +381,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "bali",
       stateId: "1826",
       cityId: "56379",
       categorySlugs: ["waterfall"],
@@ -381,6 +397,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "sumatera",
       stateId: "1792",
       cityId: "56867",
       categorySlugs: ["lake"],
@@ -396,6 +413,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "lombok",
       stateId: "1814",
       cityId: "56497",
       categorySlugs: ["beach"],
@@ -411,6 +429,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "sulawesi",
       stateId: "1795",
       cityId: "56662",
       categorySlugs: ["cultural"],
@@ -426,6 +445,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "bali",
       stateId: "1826",
       cityId: "57046",
       categorySlugs: ["historicalsites"],
@@ -444,6 +464,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "jawa",
       stateId: "1825",
       cityId: "56196",
       categorySlugs: ["shopping"],
@@ -462,6 +483,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "bali",
       stateId: "1826",
       cityId: "56263",
       categorySlugs: ["beach"],
@@ -479,6 +501,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "bali",
       stateId: "1826",
       cityId: "56890",
       categorySlugs: ["beach"],
@@ -496,6 +519,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "komodo",
       stateId: "1818",
       cityId: "56721",
       categorySlugs: ["island"],
@@ -514,6 +538,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "jawa",
       stateId: "1802",
       cityId: "57061",
       categorySlugs: ["volcano"],
@@ -532,6 +557,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "bali",
       stateId: "1826",
       cityId: "56981",
       categorySlugs: ["waterfall"],
@@ -550,6 +576,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "jawa",
       stateId: "1829",
       cityId: "56816",
       categorySlugs: ["cultural"],
@@ -568,6 +595,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "jawa",
       stateId: "1827",
       cityId: "56600",
       categorySlugs: ["volcano"],
@@ -585,6 +613,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "jawa",
       stateId: "1829",
       cityId: "56414",
       categorySlugs: ["beach"],
@@ -602,6 +631,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "bali",
       stateId: "1826",
       cityId: "56827",
       categorySlugs: ["beach"],
@@ -619,6 +649,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "bali",
       stateId: "1826",
       cityId: "56302",
       categorySlugs: ["beach"],
@@ -636,6 +667,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "jawa",
       stateId: "1802",
       cityId: "56459",
       categorySlugs: ["historicalsites"],
@@ -654,6 +686,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "jawa",
       stateId: "1825",
       cityId: "56196",
       categorySlugs: ["park"],
@@ -672,6 +705,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "jawa",
       stateId: "1805",
       cityId: "56722",
       categorySlugs: ["museum"],
@@ -690,6 +724,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "jawa",
       stateId: "1827",
       cityId: "56500",
       categorySlugs: ["volcano"],
@@ -708,6 +743,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "bali",
       stateId: "1826",
       cityId: "56302",
       categorySlugs: ["beach"],
@@ -725,6 +761,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "bali",
       stateId: "1826",
       cityId: "56322",
       categorySlugs: ["beach"],
@@ -742,6 +779,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "jawa",
       stateId: "1827",
       cityId: "56600",
       categorySlugs: ["waterfall"],
@@ -760,6 +798,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "bali",
       stateId: "1826",
       cityId: "56379",
       categorySlugs: ["beach"],
@@ -777,6 +816,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "bali",
       stateId: "1826",
       cityId: "56884",
       categorySlugs: ["beach"],
@@ -794,6 +834,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "jawa",
       stateId: "1829",
       cityId: "56637",
       categorySlugs: ["historicalsites"],
@@ -812,6 +853,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "jawa",
       stateId: "1827",
       cityId: "56301",
       categorySlugs: ["beach"],
@@ -829,6 +871,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "nusa-penida",
       stateId: "1826",
       cityId: "56884",
       categorySlugs: ["beach"],
@@ -846,6 +889,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "nusa-penida",
       stateId: "1826",
       cityId: "56884",
       categorySlugs: ["beach"],
@@ -991,6 +1035,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "ambon",
       stateId: "1800",
       cityId: "56514",
       categorySlugs: ["beach"],
@@ -1062,6 +1107,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "lombok",
       stateId: "1814",
       cityId: "56498",
       categorySlugs: ["mountain"],
@@ -1080,6 +1126,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "bali",
       stateId: "1826",
       cityId: "56438",
       categorySlugs: ["mountain"],
@@ -1097,6 +1144,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "jawa",
       stateId: "1802",
       cityId: "56230",
       categorySlugs: ["mountain"],
@@ -1114,6 +1162,7 @@ export default async function run(prisma: PrismaClient) {
     },
     {
       countryId: "102",
+      islandSlug: "jawa",
       stateId: "1802",
       cityId: "56439",
       categorySlugs: ["mountain"],
