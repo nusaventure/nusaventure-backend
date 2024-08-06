@@ -1205,7 +1205,13 @@ export default async function run(prisma: PrismaClient) {
 
       await prisma.place.upsert({
         where: { slug: place.slug },
-        update: place,
+        update: {
+          ...place,
+          categories: {
+            connect: categorySlugs.map((slug) => ({ slug })),
+          },
+          islandId,
+        },
         create: {
           ...place,
           categories: {
