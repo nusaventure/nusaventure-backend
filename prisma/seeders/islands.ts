@@ -202,6 +202,36 @@ export default async function run(prisma: PrismaClient) {
       longitude: 112.7396031,
       zoom: 9,
     },
+    {
+      countryId: "102",
+      name: "Nusa Penida",
+      slug: "nusa-penida",
+      imageUrl:
+        "https://ucarecdn.com/9585c4dc-c428-44ab-a456-78eae617d018/-/preview/750x1000/",
+      latitude: -8.7454859,
+      longitude: 115.4964409,
+      zoom: 9,
+    },
+    {
+      countryId: "102",
+      name: "Ambon",
+      slug: "ambon",
+      imageUrl:
+        "https://potretmaluku.id/wp-content/uploads/2021/03/IMG_20210313_193428.jpg",
+      latitude: -3.6421134,
+      longitude: 128.0548957,
+      zoom: 9,
+    },
+    {
+      countryId: "102",
+      name: "Komodo",
+      slug: "komodo",
+      imageUrl:
+        "https://upload.wikimedia.org/wikipedia/commons/e/e3/Komodo_Island_north_aerial.jpg",
+      latitude: -8.5888579,
+      longitude: 119.3078264,
+      zoom: 9,
+    },
   ];
 
   await Promise.all(
