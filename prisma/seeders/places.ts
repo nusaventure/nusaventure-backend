@@ -133,7 +133,7 @@ export default async function run(prisma: PrismaClient) {
       slug: "borobudur-temple",
       description: "9th-century Mahayana Buddhist temple.",
       imageUrl:
-        "https://ucarecdn.com/ed9d14b1-027a-4fbc-852d-398b308a0cd4/-/preview/400x300/",
+        "https://ucarecdn.com/ae9508a4-dcdb-4425-9b7c-010c459d819b/-/preview/400x300/",
       latitude: -7.6078745,
       longitude: 110.2037512,
       zoom: 14,
