@@ -7,6 +7,7 @@ export const getAll = async (query: z.infer<typeof QueryIslandSchema>) => {
     select: {
       id: true,
       name: true,
+      slug: true,
       latitude: true,
       longitude: true,
       imageUrl: true,
