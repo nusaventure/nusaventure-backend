@@ -7,7 +7,8 @@
     "seed": "prisma db seed",
     "studio": "prisma studio",
     "migrate:dev": "prisma migrate dev",
-    "migrate:deploy": "prisma migrate deploy"
+    "migrate:deploy": "prisma migrate deploy",
+    "docker:up": "docker compose up -d"
   },
   "prisma": {
     "seed": "bun run prisma/seeders/index.ts"
@@ -15,12 +16,12 @@
   "dependencies": {
     "@hono/swagger-ui": "^0.3.0",
     "@hono/zod-openapi": "^0.14.8",
-    "@prisma/client": "^5.16.2",
+    "@prisma/client": "^5.17.0",
     "hono": "^4.4.12",
     "oslo": "^1.2.1"
   },
   "devDependencies": {
-    "prisma": "^5.16.2",
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "prisma": "^5.17.0"
   }
 }
