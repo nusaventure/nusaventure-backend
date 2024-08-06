@@ -38,6 +38,13 @@ const placeResponseData: Prisma.PlaceSelect = {
       name: true,
     },
   },
+  island: {
+    select: {
+      id: true,
+      slug: true,
+      name: true,
+    },
+  },
 };
 
 export async function getAll(query: z.infer<typeof PlaceCitySchema>) {
@@ -86,6 +93,18 @@ export async function getAll(query: z.infer<typeof PlaceCitySchema>) {
                 contains: query.search,
                 mode: "insensitive",
               },
+            },
+          },
+        },
+        {
+          island: {
+            name: {
+              contains: query.search,
+              mode: "insensitive",
+            },
+            slug: {
+              contains: query.search,
+              mode: "insensitive",
             },
           },
         },
