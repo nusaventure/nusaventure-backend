@@ -54,3 +54,43 @@ savedPlacesRoute.openapi(
     }
   }
 );
+
+// GET ALL SAVED PLACES
+savedPlacesRoute.openapi(
+  {
+    method: "get",
+    path: "/",
+    middleware: authBearer,
+    description: "Get all saved places",
+    security: [
+      {
+        AuthorizationBearer: [],
+      },
+    ],
+    responses: {
+      200: {
+        description: "Successfully get saved places data",
+      },
+    },
+    tags: API_TAG,
+  },
+  async (c) => {
+    const user = c.var.user;
+
+    try {
+      const savedPlaces = await savedPlaceService.getAllSavedPlaces(user.id);
+
+      return c.json({
+        message: "Success",
+        savedPlaces,
+      });
+    } catch (error) {
+      return c.json(
+        {
+          message: (error as Error).message,
+        },
+        400
+      );
+    }
+  }
+);

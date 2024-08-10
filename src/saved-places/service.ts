@@ -13,3 +13,31 @@ export const addSavedPlace = async (
     },
   });
 };
+
+export const getAllSavedPlaces = async (userId: string) => {
+  return await prisma.savedPlace.findMany({
+    where: {
+      userId,
+    },
+    select: {
+      place: {
+        select: {
+          title: true,
+          slug: true,
+          description: true,
+          address: true,
+          imageUrl: true,
+          latitude: true,
+          longitude: true,
+          categories: {
+            select: {
+              name: true,
+              slug: true,
+            },
+          },
+        },
+      },
+      id: true,
+    },
+  });
+};
