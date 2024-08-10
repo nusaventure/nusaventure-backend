@@ -203,5 +203,6 @@ model SavedPlace {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  @@unique([placeId, userId])
   @@map("savedPlace")
 }

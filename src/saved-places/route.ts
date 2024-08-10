@@ -2,6 +2,7 @@ import { OpenAPIHono } from "@hono/zod-openapi";
 import { authBearer, AuthBearerEnv } from "../middleware/auth-bearer";
 import { CreateSavedPlaceSchema, DeleteSavedPlaceSchema } from "./schema";
 import * as savedPlaceService from "./service";
+import { Prisma } from "@prisma/client";
 
 const API_TAG = ["Saved Places"];
 
@@ -45,6 +46,18 @@ savedPlacesRoute.openapi(
         message: "Success",
       });
     } catch (error) {
+      if (error instanceof Prisma.PrismaClientKnownRequestError) {
+        if (error.code === "P2002") {
+          // Handle unique constraint violation
+
+          return c.json(
+            {
+              message: "This place is already saved to your saved places",
+            },
+            400
+          );
+        }
+      }
       return c.json(
         {
           message: (error as Error).message,
