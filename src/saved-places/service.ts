@@ -1,9 +1,9 @@
 import { z } from "@hono/zod-openapi";
-import { SavedPlaceSchema } from "./schema";
+import { CreateSavedPlaceSchema } from "./schema";
 import { prisma } from "../lib/db";
 
 export const addSavedPlace = async (
-  body: z.infer<typeof SavedPlaceSchema>,
+  body: z.infer<typeof CreateSavedPlaceSchema>,
   userId: string
 ) => {
   return await prisma.savedPlace.create({
@@ -14,6 +14,7 @@ export const addSavedPlace = async (
   });
 };
 
+// GET ALL SAVED PLACES
 export const getAllSavedPlaces = async (userId: string) => {
   return await prisma.savedPlace.findMany({
     where: {
@@ -38,6 +39,15 @@ export const getAllSavedPlaces = async (userId: string) => {
         },
       },
       id: true,
+    },
+  });
+};
+
+// DELETE A SAVED PLACE
+export const deleteSavedPlace = async (id: string) => {
+  return await prisma.savedPlace.delete({
+    where: {
+      id,
     },
   });
 };

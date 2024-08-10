@@ -1,6 +1,6 @@
 import { OpenAPIHono } from "@hono/zod-openapi";
 import { authBearer, AuthBearerEnv } from "../middleware/auth-bearer";
-import { SavedPlaceSchema } from "./schema";
+import { CreateSavedPlaceSchema, DeleteSavedPlaceSchema } from "./schema";
 import * as savedPlaceService from "./service";
 
 const API_TAG = ["Saved Places"];
@@ -18,7 +18,7 @@ savedPlacesRoute.openapi(
       body: {
         content: {
           "application/json": {
-            schema: SavedPlaceSchema,
+            schema: CreateSavedPlaceSchema,
           },
         },
       },
@@ -83,6 +83,47 @@ savedPlacesRoute.openapi(
       return c.json({
         message: "Success",
         savedPlaces,
+      });
+    } catch (error) {
+      return c.json(
+        {
+          message: (error as Error).message,
+        },
+        400
+      );
+    }
+  }
+);
+
+// DELETE SAVED PLACE
+savedPlacesRoute.openapi(
+  {
+    method: "delete",
+    path: "/{id}",
+    request: {
+      params: DeleteSavedPlaceSchema,
+    },
+    middleware: authBearer,
+    description: "Delete a saved place",
+    security: [
+      {
+        AuthorizationBearer: [],
+      },
+    ],
+    responses: {
+      200: {
+        description: "Successfully deleted the saved place",
+      },
+    },
+    tags: API_TAG,
+  },
+  async (c) => {
+    const savedPlaceId = c.req.param("id")!;
+    try {
+      await savedPlaceService.deleteSavedPlace(savedPlaceId);
+
+      return c.json({
+        message: "Success",
       });
     } catch (error) {
       return c.json(
