@@ -135,6 +135,7 @@ model Place {
   images    PlaceImage[]
 
   categories Category[]
+  savedPlace SavedPlace[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
@@ -172,6 +173,8 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  savedPlace SavedPlace[]
+
   @@map("users")
 }
 
@@ -187,4 +190,18 @@ model Password {
   updatedAt DateTime @updatedAt
 
   @@map("passwords")
+}
+
+model SavedPlace {
+  id String @id @default(cuid())
+
+  place   Place?  @relation(fields: [placeId], references: [id])
+  placeId String?
+  user    User?   @relation(fields: [userId], references: [id])
+  userId  String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("savedPlace")
 }
