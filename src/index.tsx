@@ -1,14 +1,15 @@
 import { swaggerUI } from "@hono/swagger-ui";
 import { OpenAPIHono } from "@hono/zod-openapi";
 import { cors } from "hono/cors";
+import { authRoute } from "./auth/route";
 import { categoryRoute } from "./categories/route";
 import { citiesRoute } from "./cities/route";
 import { countryRoute } from "./countries/route";
 import { islandRoute } from "./islands/route";
 import { placeRoute } from "./places/route";
+import { savedPlacesRoute } from "./saved-places/route";
 import { stateRoute } from "./states/route";
 import { WelcomePage } from "./welcome";
-import { authRoute } from "./auth/route";
 
 const app = new OpenAPIHono({ strict: false });
 
@@ -53,6 +54,7 @@ app.route("/cities", citiesRoute);
 app.route("/categories", categoryRoute);
 app.route("/islands", islandRoute);
 app.route("/auth", authRoute);
+app.route("/saved-places", savedPlacesRoute);
 
 // WELCOME PAGE
 app.get("/", (c) =>
