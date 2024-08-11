@@ -698,7 +698,7 @@ export default async function run(prisma: PrismaClient) {
       imageUrl:
         "https://ucarecdn.com/a99c75bb-91c8-40a8-8a88-148a70a5e06c/-/preview/400x300/",
       latitude: -6.8589267,
-      longitude: -6.8589267,
+      longitude: 102.7528103,
       zoom: 14,
       address:
         "Kompleks Tahura, Jl. Ir. H. Juanda No.99, Ciburial, Kec. Cimenyan, Kabupaten Bandung, Jawa Barat 40198",
@@ -882,8 +882,8 @@ export default async function run(prisma: PrismaClient) {
       description: "Beautiful beach on Nusa Penida.",
       imageUrl:
         "https://ucarecdn.com/edaaa01f-cf4b-416f-9fb2-78a2dc990edc/-/preview/400x300/",
-      latitude: -8.7151611,
-      longitude: 37.4121815,
+      latitude: -8.7154192,
+      longitude: 115.4563538,
       zoom: 14,
       address: "Nusa Penida, Bali",
       isFeatured: false,
@@ -1205,13 +1205,7 @@ export default async function run(prisma: PrismaClient) {
 
       await prisma.place.upsert({
         where: { slug: place.slug },
-        update: {
-          ...place,
-          categories: {
-            connect: categorySlugs.map((slug) => ({ slug })),
-          },
-          islandId,
-        },
+        update: place,
         create: {
           ...place,
           categories: {
