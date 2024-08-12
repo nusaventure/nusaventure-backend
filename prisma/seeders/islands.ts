@@ -74,26 +74,26 @@ export default async function run(prisma: PrismaClient) {
       longitude: 127.5665118,
       zoom: 8,
     },
-    {
-      countryId: "102",
-      name: "Seram",
-      slug: "seram",
-      imageUrl:
-        "https://ucarecdn.com/85155fc5-994d-4f8f-b74b-c0549bb3fc66/-/preview/400x300/",
-      latitude: -3.5633212,
-      longitude: 128.5620037,
-      zoom: 8.5,
-    },
-    {
-      countryId: "102",
-      name: "Sumbawa",
-      slug: "sumbawa",
-      imageUrl:
-        "https://ucarecdn.com/cf8d6c09-7479-4362-a030-353f2201e19f/-/preview/400x300/",
-      latitude: -8.5942753,
-      longitude: 117.2943635,
-      zoom: 9,
-    },
+    // {
+    //   countryId: "102",
+    //   name: "Seram",
+    //   slug: "seram",
+    //   imageUrl:
+    //     "https://ucarecdn.com/85155fc5-994d-4f8f-b74b-c0549bb3fc66/-/preview/400x300/",
+    //   latitude: -3.5633212,
+    //   longitude: 128.5620037,
+    //   zoom: 8.5,
+    // },
+    // {
+    //   countryId: "102",
+    //   name: "Sumbawa",
+    //   slug: "sumbawa",
+    //   imageUrl:
+    //     "https://ucarecdn.com/cf8d6c09-7479-4362-a030-353f2201e19f/-/preview/400x300/",
+    //   latitude: -8.5942753,
+    //   longitude: 117.2943635,
+    //   zoom: 9,
+    // },
     {
       countryId: "102",
       name: "Flores",
@@ -104,16 +104,16 @@ export default async function run(prisma: PrismaClient) {
       longitude: 120.6411681,
       zoom: 8.75,
     },
-    {
-      countryId: "102",
-      name: "Kolepom",
-      slug: "kolepom",
-      imageUrl:
-        "https://ucarecdn.com/72ca08cb-d3ad-4f8b-b8ba-b6a91ca57a11/-/preview/400x300/",
-      latitude: -7.813822,
-      longitude: 138.0547589,
-      zoom: 9,
-    },
+    // {
+    //   countryId: "102",
+    //   name: "Kolepom",
+    //   slug: "kolepom",
+    //   imageUrl:
+    //     "https://ucarecdn.com/72ca08cb-d3ad-4f8b-b8ba-b6a91ca57a11/-/preview/400x300/",
+    //   latitude: -7.813822,
+    //   longitude: 138.0547589,
+    //   zoom: 9,
+    // },
     {
       countryId: "102",
       name: "Bangka",
