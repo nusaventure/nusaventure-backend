@@ -141,6 +141,7 @@ model Place {
   updatedAt DateTime @default(now()) @updatedAt
 
   @@index([isFeatured, countryId, islandId, stateId, cityId])
+  @@index([position(sort: Asc)])
   @@map("places")
 }
 
