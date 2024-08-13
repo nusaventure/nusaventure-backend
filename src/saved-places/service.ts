@@ -44,10 +44,11 @@ export const getAllSavedPlaces = async (userId: string) => {
 };
 
 // DELETE A SAVED PLACE
-export const deleteSavedPlace = async (id: string) => {
+export const deleteSavedPlace = async (id: string, userId: string) => {
   return await prisma.savedPlace.delete({
     where: {
       id,
+      userId,
     },
   });
 };

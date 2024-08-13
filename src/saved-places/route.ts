@@ -91,11 +91,11 @@ savedPlacesRoute.openapi(
     const user = c.var.user;
 
     try {
-      const savedPlaces = await savedPlaceService.getAllSavedPlaces(user.id);
+      const data = await savedPlaceService.getAllSavedPlaces(user.id);
 
       return c.json({
         message: "Success",
-        savedPlaces,
+        data,
       });
     } catch (error) {
       return c.json(
@@ -132,8 +132,10 @@ savedPlacesRoute.openapi(
   },
   async (c) => {
     const savedPlaceId = c.req.param("id")!;
+    const user = c.var.user;
+
     try {
-      await savedPlaceService.deleteSavedPlace(savedPlaceId);
+      await savedPlaceService.deleteSavedPlace(savedPlaceId, user.id);
 
       return c.json({
         message: "Success",

@@ -1,10 +1,14 @@
 import { OpenAPIHono, z } from "@hono/zod-openapi";
 import * as placeService from "./service";
 import { PlaceCitySchema, PlaceSlugSchema } from "./schema";
+import {
+  allowGuestBearer,
+  AllowGuestBearerEnv,
+} from "../middleware/auth-bearer";
 
 const API_TAG = ["Places"];
 
-export const placeRoute = new OpenAPIHono()
+export const placeRoute = new OpenAPIHono<AllowGuestBearerEnv>()
   // GET ALL PLACES
   .openapi(
     {
@@ -84,6 +88,7 @@ export const placeRoute = new OpenAPIHono()
     {
       method: "get",
       path: "/{slug}",
+      middleware: allowGuestBearer,
       request: {
         params: PlaceSlugSchema,
       },
@@ -100,8 +105,9 @@ export const placeRoute = new OpenAPIHono()
     },
     async (c) => {
       const slug = c.req.param("slug")!;
+      const user = c.var.user;
 
-      const data = await placeService.getDetailPlaceBySlug(slug);
+      const data = await placeService.getDetailPlaceBySlug(slug, user?.id);
 
       if (!data) {
         return c.json({ message: "Place not found" }, 404);

@@ -13,24 +13,6 @@ const placeResponseData: Prisma.PlaceSelect = {
   longitude: true,
   zoom: true,
   address: true,
-  country: {
-    select: {
-      id: true,
-      name: true,
-    },
-  },
-  state: {
-    select: {
-      id: true,
-      name: true,
-    },
-  },
-  city: {
-    select: {
-      id: true,
-      name: true,
-    },
-  },
   categories: {
     select: {
       id: true,
@@ -54,7 +36,6 @@ export async function getAll(query: z.infer<typeof PlaceCitySchema>) {
       countryId: query.countryId,
       stateId: query.stateId,
       cityId: query.cityId,
-      // categories: query.categoryId,
       OR: [
         {
           title: {
@@ -116,8 +97,8 @@ export async function getAll(query: z.infer<typeof PlaceCitySchema>) {
   });
 }
 
-export async function getDetailPlaceBySlug(slug: string) {
-  return await prisma.place.findUnique({
+export async function getDetailPlaceBySlug(slug: string, userId?: string) {
+  const place = await prisma.place.findUnique({
     where: { slug },
     select: {
       ...placeResponseData,
@@ -130,6 +111,27 @@ export async function getDetailPlaceBySlug(slug: string) {
       },
     },
   });
+
+  if (!place) {
+    return null;
+  }
+
+  const savedPlace = userId
+    ? await prisma.savedPlace.findFirst({
+        select: {
+          id: true,
+        },
+        where: {
+          placeId: place.id,
+          userId,
+        },
+      })
+    : null;
+
+  return {
+    ...place,
+    savedPlaceId: savedPlace?.id,
+  };
 }
 
 export async function getFeaturedPlaces() {
@@ -137,7 +139,15 @@ export async function getFeaturedPlaces() {
     where: {
       isFeatured: true,
     },
-    select: placeResponseData,
+    select: {
+      ...placeResponseData,
+      city: {
+        select: {
+          id: true,
+          name: true,
+        },
+      },
+    },
     orderBy: {
       position: "asc",
     },
