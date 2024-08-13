@@ -199,7 +199,7 @@ export default async function run(prisma: PrismaClient) {
       name: "Madura",
       slug: "madura",
       imageUrl:
-        "https://ucarecdn.com/8799b834-b32e-463f-95b7-eebdc50de337/-/preview/400x300/",
+        "https://ucarecdn.com/fd275907-17c0-4a08-90f5-e6653f9116e8/-/preview/400x300/",
       latitude: -7.0581924,
       longitude: 112.7396031,
       zoom: 9,
