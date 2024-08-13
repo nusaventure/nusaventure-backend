@@ -13,24 +13,6 @@ const placeResponseData: Prisma.PlaceSelect = {
   longitude: true,
   zoom: true,
   address: true,
-  country: {
-    select: {
-      id: true,
-      name: true,
-    },
-  },
-  state: {
-    select: {
-      id: true,
-      name: true,
-    },
-  },
-  city: {
-    select: {
-      id: true,
-      name: true,
-    },
-  },
   categories: {
     select: {
       id: true,
@@ -54,7 +36,6 @@ export async function getAll(query: z.infer<typeof PlaceCitySchema>) {
       countryId: query.countryId,
       stateId: query.stateId,
       cityId: query.cityId,
-      // categories: query.categoryId,
       OR: [
         {
           title: {
@@ -158,7 +139,15 @@ export async function getFeaturedPlaces() {
     where: {
       isFeatured: true,
     },
-    select: placeResponseData,
+    select: {
+      ...placeResponseData,
+      city: {
+        select: {
+          id: true,
+          name: true,
+        },
+      },
+    },
     orderBy: {
       position: "asc",
     },
