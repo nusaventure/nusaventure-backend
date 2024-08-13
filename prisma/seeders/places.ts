@@ -698,7 +698,7 @@ export default async function run(prisma: PrismaClient) {
       imageUrl:
         "https://ucarecdn.com/a99c75bb-91c8-40a8-8a88-148a70a5e06c/-/preview/400x300/",
       latitude: -6.8589267,
-      longitude: 102.7528103,
+      longitude: 107.6281651,
       zoom: 14,
       address:
         "Kompleks Tahura, Jl. Ir. H. Juanda No.99, Ciburial, Kec. Cimenyan, Kabupaten Bandung, Jawa Barat 40198",
