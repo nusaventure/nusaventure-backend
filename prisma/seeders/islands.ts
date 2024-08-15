@@ -207,7 +207,7 @@ export default async function run(prisma: PrismaClient) {
     {
       countryId: "102",
       name: "Nusa Penida",
-      slug: "nusa-penida",
+      slug: "penida",
       imageUrl:
         "https://ucarecdn.com/1034283d-87a8-4a69-aa1e-46fc5b4e2f39/-/preview/400x300/",
       latitude: -8.7454859,
