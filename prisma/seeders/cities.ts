@@ -9399,6 +9399,28 @@ export default async function run(prisma: PrismaClient) {
       zoom: 8,
     },
     {
+      id: "56562",
+      countryId: "102",
+      stateId: "1792",
+      name: "Kabupaten Nias Selatan",
+      imageUrl:
+        "https://ucarecdn.com/c3b918c7-0c89-4eba-8900-a6a60c46d1e6/-/preview/400x300/",
+      latitude: 0.1993557,
+      longitude: 97.5741896,
+      zoom: 8,
+    },
+    {
+      id: "56563",
+      countryId: "102",
+      stateId: "1804",
+      name: "Kalimantan Timur",
+      imageUrl:
+        "https://ucarecdn.com/78a8d1f5-e4a8-4268-90f2-8ef0ca4df7f8/-/preview/400x300/",
+      latitude: 0.1039736,
+      longitude: 113.7897293,
+      zoom: 8,
+    },
+    {
       id: "56569",
       countryId: "102",
       stateId: "1792",
